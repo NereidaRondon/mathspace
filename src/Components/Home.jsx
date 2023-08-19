@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ActionButtons from './ActionButtons';
-
+import Stars from './Stars';
 export default function Home(){
 
   const data = [
@@ -25,20 +25,20 @@ export default function Home(){
     },
   ];
   const multiplier = 2;
-   //const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [multiplicand, setMultiplicand] = useState('');
   const [productValue, setProductValue] = useState(null);
   const [showNextBtn, setShowNextBtn] = useState(false);
-
+  console.log(score);
 
   //! CLICK FUNCTIONS
   const handleStart = () => {
     handleEquation();
     setInputValue('');
+    setScore(0);
   }
   
- 
   const handleInputChange = (e)=>{
     e.preventDefault();
     setInputValue(e.target.value);
@@ -51,16 +51,14 @@ export default function Home(){
     console.log(Number(inputValue) === productValue);
 
     if(Number(inputValue) === productValue){
-      answerCorrect();
+      console.log('That is correct!');
+      setShowNextBtn(true);
+      setScore(score + 1);
+
     }else{
       console.log('Try again...');
     } 
     console.log("Check answer!");
-  }
-
-  const answerCorrect = () => {
-    console.log('That is correct!');
-    setShowNextBtn(true);
   }
 
   const handleClear = () => {
@@ -102,7 +100,9 @@ export default function Home(){
       <div className='header-div'>
         <h1>MathSpace</h1>
         <h2>Learn how to multiply</h2>
-        <div className='stars-div'>🌠</div>
+        <div className='stars-div'>🌠 
+          <Stars score={score}/>
+        </div>
       </div>
 
 
