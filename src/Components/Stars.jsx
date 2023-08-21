@@ -7,7 +7,7 @@ export default function Stars(props){
     for(let i = 0; i < total; i++){
       stars += '⭐';
     }
-    console.log(stars);
+    //console.log(stars);
     return stars;
   }
 

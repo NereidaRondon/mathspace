@@ -6,39 +6,50 @@
 }
 
 
-* {
+/* * {
   border: 1px solid red;
+} */
+
+.text-style{
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0));
 }
 
-
-
 .header-div{
-  height: 175px;
+  height: 225px;
   width:100%;
   position:fixed;
   top:0%;
   left:0%;
-  background: blue;
+  /* background: linear-gradient(90deg, #015b44, #00564d, #005056, #004a5e, #004364, #003b66, #003263, #06275c); */
+  background:url('./assets/green-galaxy.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
+.title-div{
+  background: rgba(255, 255, 255, .3);
+  border-radius: 10px;
+  width: 300px;
+  margin: 1rem auto;
+  padding: .5rem 2rem 1rem 2rem;
+}
 .stars-div{
-  font-size: 4rem;
+  /* border: 2px solid rgb(255, 230, 0); */
+  font-size: 3rem;
   width: 100%;
   margin: 0 0 2rem 0;
-  border: 2px solid rgb(255, 230, 0);
+  filter: drop-shadow(1px 1px 3px rgb(0, 0, 0));
 }
 .main-div{
+  /* border: 1px solid rgb(204, 0, 255); */
   display:flex;
   margin-top: 100px;
   height: 20rem;
   justify-content: center;
   align-content: center;
-  border: 1px solid rgb(204, 0, 255);
 
 }
 .equation-div{
-  font-size: 5rem;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   margin: 0 3rem 0 0;
   padding: 0 2rem;
   display: flex;
@@ -48,9 +59,9 @@
 }
 
 .math-signs{
-  width: 5rem;
+  width: 4rem;
   font-size: 3rem;
-  margin:auto;
+  margin:auto 1rem auto 0;
   filter: drop-shadow(1.5px 1px 2px rgb(0, 0, 0));
 }
 
@@ -59,14 +70,14 @@
 }
 
 .product-div{
-  margin:0;
   text-align: center;
   padding: 1rem;
-  width: 12rem;
+  width: 10rem;
+  border-radius: 15px;
 }
 
 .equation-size{
-  font-size: 7rem;
+  font-size: 5rem;
   font-weight: bold;
   margin:auto;
 }

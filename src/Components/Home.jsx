@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ActionButtons from './ActionButtons';
-import Stars from './Stars';
+import Header from './Header';
+
 export default function Home(){
 
   const data = [
@@ -24,10 +25,11 @@ export default function Home(){
       product: 10,
     },
   ];
+  let usedNumbers=[0];
   const multiplier = 2;
   const [score, setScore] = useState(0);
   const [inputValue, setInputValue] = useState('');
-  const [multiplicand, setMultiplicand] = useState('');
+  const [multiplicand, setMultiplicand] = useState(0);
   const [productValue, setProductValue] = useState(null);
   const [showNextBtn, setShowNextBtn] = useState(false);
   console.log(score);
@@ -37,10 +39,11 @@ export default function Home(){
     handleEquation();
     setInputValue('');
     setScore(0);
+    usedNumbers=[0];
   }
   
   const handleInputChange = (e)=>{
-    e.preventDefault();
+    
     setInputValue(e.target.value);
     console.log(e.target.value);
   }
@@ -75,10 +78,19 @@ export default function Home(){
   }
 
   function handleEquation(){
-    let num = Math.floor(Math.random()*21);
+    let num;
+    do{
+      num = Math.floor(Math.random()*13);
 
+    } while (usedNumbers.includes(num));
+
+    console.log(num);
+    console.log(typeof(num));
+
+    usedNumbers.push(num);
     setMultiplicand(num);
     setProductValue(multiplier * num);
+    console.log(usedNumbers);
   }
 
   const productBox =()=>{
@@ -97,15 +109,7 @@ export default function Home(){
 
   return(
     <>
-      <div className='header-div'>
-        <h1>MathSpace</h1>
-        <h2>Learn how to multiply</h2>
-        <div className='stars-div'>🌠 
-          <Stars score={score}/>
-        </div>
-      </div>
-
-
+      <Header score={score} />
 
       <div className='main-div'> 
          
