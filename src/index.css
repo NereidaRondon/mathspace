@@ -32,7 +32,8 @@ body {
   /* background:url('./assets/green-galaxy.jpg');
   background-repeat: no-repeat;
   background-size: cover; */
-  background: linear-gradient(90deg, #015b44, #00564d, #005056, #004a5e, #004364, #003b66, #003263, #06275c);
+  background: linear-gradient(90deg, #00361f, #00372a, #003637, #003644, #003450, #003259, #002d5d, #06275c);
+  background: linear-gradient(90deg, #022f19, #002e21, #002c2a, #002932, #002639, #00223c, #001e3d, #00183a);
 }
 
 h1 {
@@ -51,11 +52,13 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  background-color: #333333;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 5px rgb(0, 0, 0));
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #4cbca0;
 }
 button:focus,
 button:focus-visible {

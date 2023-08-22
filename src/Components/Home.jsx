@@ -4,32 +4,12 @@ import Header from './Header';
 
 export default function Home(){
 
-  const data = [
-
-    { multiplicand: 0,
-      product: 0,
-    },
-    { multiplicand: 1,
-      product: 2,
-    },
-    { multiplicand: 2,
-      product: 4,
-    },
-    { multiplicand: 3, 
-      product: 6,
-    },
-    { multiplicand: 4,
-      product: 8,
-    },
-    { multiplicand: 5,
-      product: 10,
-    },
-  ];
-  let usedNumbers=[0];
   const multiplier = 2;
+  const [turn, setTurn] = useState(0);
   const [score, setScore] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [multiplicand, setMultiplicand] = useState(0);
+  const [usedNumbers, setUsedNumbers] = useState([0]);
   const [productValue, setProductValue] = useState(null);
   const [showNextBtn, setShowNextBtn] = useState(false);
   console.log(score);
@@ -38,8 +18,10 @@ export default function Home(){
   const handleStart = () => {
     handleEquation();
     setInputValue('');
+    setTurn(1);
+    console.log('turn: ', turn);
     setScore(0);
-    usedNumbers=[0];
+    setUsedNumbers([0]);
   }
   
   const handleInputChange = (e)=>{
@@ -49,14 +31,17 @@ export default function Home(){
   }
   
   const handleCheck = () => {
+    console.log(usedNumbers);
     console.log(inputValue);
     console.log(productValue);
     console.log(Number(inputValue) === productValue);
+    console.log('turn: ', turn);
 
     if(Number(inputValue) === productValue){
       console.log('That is correct!');
       setShowNextBtn(true);
       setScore(score + 1);
+      setTurn(turn+1);
 
     }else{
       console.log('Try again...');
@@ -73,8 +58,15 @@ export default function Home(){
     handleEquation();
     handleClear;
     console.log("Next!");
+
     setInputValue('');
     setShowNextBtn(false);
+    
+    console.log('turn: ', turn);
+
+    if (turn === 13){
+      console.log("Task Complete!")
+    }
   }
 
   function handleEquation(){
@@ -84,16 +76,15 @@ export default function Home(){
 
     } while (usedNumbers.includes(num));
 
-    console.log(num);
-    console.log(typeof(num));
-
+    console.log('random number: ', num);
+  
     usedNumbers.push(num);
     setMultiplicand(num);
     setProductValue(multiplier * num);
     console.log(usedNumbers);
   }
 
-  const productBox =()=>{
+  const productBox = ( )=> {
     return(
       <input 
         id='inputElement' 
