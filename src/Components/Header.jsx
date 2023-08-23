@@ -6,7 +6,8 @@ export default function Header(props){
     
     <div className='header-div'>
       <h1 className='title-div text-style'>MathSpace</h1>
-      <div className='stars-div'><Stars score={props.score}/>
+      <div className='stars-div'>
+        <Stars score={props.score}/>
       </div>
     </div>
 

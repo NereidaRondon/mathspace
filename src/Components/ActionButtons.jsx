@@ -7,7 +7,7 @@ export default function ActionButtons(props){
 
   return(
 
-    <div>
+    <div className="btn-div">
       <div>
          {hide && <button onClick={props.check}> Check </button>}
 
