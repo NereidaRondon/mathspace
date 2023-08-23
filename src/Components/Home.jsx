@@ -1,27 +1,59 @@
 import { useState } from 'react';
 import ActionButtons from './ActionButtons';
 import Header from './Header';
+import Modal from './Modal';
 
 export default function Home(){
 
-  const multiplier = 2;
   const [turn, setTurn] = useState(0);
   const [score, setScore] = useState(0);
+  const [showModal, setShowModal] = useState(true);
+  const [multiplier, setMultiplier] = useState(0);
   const [inputValue, setInputValue] = useState('');
-  const [multiplicand, setMultiplicand] = useState(0);
   const [usedNumbers, setUsedNumbers] = useState([0]);
-  const [productValue, setProductValue] = useState(null);
+  const [multiplicand, setMultiplicand] = useState(0);
   const [showNextBtn, setShowNextBtn] = useState(false);
+  const [productValue, setProductValue] = useState(null);
   console.log(score);
 
+
+
   //! CLICK FUNCTIONS
+
+  const handleMultiplier2 = () => {
+    setMultiplier(2);
+    console.log(2);
+  }
+
+  const handleMultiplier3 = () => {
+    setMultiplier(3);
+    console.log(3);
+  }
+
+  const handleMultiplier4 = () => {
+    setMultiplier(4);
+    console.log(4);
+  }
+
+  const handleMultiplier5 = () => {
+    setMultiplier(5);
+    console.log(5);
+  }
+
+  const handleMultiplier10 = () => {
+    setMultiplier(10);
+    console.log(10);
+  }
+
   const handleStart = () => {
     handleEquation();
     setInputValue('');
     setTurn(1);
     console.log('turn: ', turn);
+    console.log(multiplier);
     setScore(0);
     setUsedNumbers([0]);
+    setShowModal(false);
   }
   
   const handleInputChange = (e)=>{
@@ -57,6 +89,7 @@ export default function Home(){
   const handleNext = () => {
     handleEquation();
     handleClear;
+    console.log(usedNumbers);
     console.log("Next!");
 
     setInputValue('');
@@ -78,10 +111,11 @@ export default function Home(){
 
     console.log('random number: ', num);
   
-    usedNumbers.push(num);
+    //usedNumbers.push(num);
+    setUsedNumbers(usedNumbers => [...usedNumbers, num]);
     setMultiplicand(num);
     setProductValue(multiplier * num);
-    console.log(usedNumbers);
+    
   }
 
   const productBox = ( )=> {
@@ -124,7 +158,17 @@ export default function Home(){
       </div>
 
         <br></br>
-        <button onClick={handleStart}>START</button>
+        {showModal && 
+          <Modal 
+            start={handleStart}
+            multiplier={multiplier}
+            handleMultiplier2={handleMultiplier2}
+            handleMultiplier3={handleMultiplier3}
+            handleMultiplier4={handleMultiplier4}
+            handleMultiplier5={handleMultiplier5}
+            handleMultiplier10={handleMultiplier10}
+          />
+        }
     </>
 
 

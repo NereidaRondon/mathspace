@@ -27,11 +27,9 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  /* background:url('./assets/green-galaxy.jpg');
-  background-repeat: no-repeat;
-  background-size: cover; */
+  width: 100%;
+  min-height: 100dvh;
+  background-size: cover; 
   background: linear-gradient(90deg, #00361f, #00372a, #003637, #003644, #003450, #003259, #002d5d, #06275c);
   background: linear-gradient(90deg, #022f19, #002e21, #002c2a, #002932, #002639, #00223c, #001e3d, #00183a);
 }

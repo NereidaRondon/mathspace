@@ -6,9 +6,9 @@
 }
 
 
-/* * {
+* {
   border: 1px solid red;
-} */
+}
 
 .text-style{
   filter: drop-shadow(1px 1px 3px rgb(0, 0, 0));
@@ -39,10 +39,26 @@
   margin: 0 0 2rem 0;
   filter: drop-shadow(1px 1px 3px rgb(0, 0, 0));
 }
+
+.start-modal{
+  background-color: rgb(110, 235, 197);
+  border-radius: 20px;
+  width: 70%;
+  height:50%;
+  position:absolute;
+  top:30%;
+  left:15%;
+  margin: auto;
+  color:black;
+}
+.radio-label{
+  font-size: 1.5rem;
+  margin: 0 2rem 15rem 0;
+}
 .main-div{
   /* border: 1px solid rgb(204, 0, 255); */
   display:flex;
-  margin-top: 100px;
+  margin: 10rem auto 0 auto; 
   height: 20rem;
   justify-content: center;
   align-content: center;
