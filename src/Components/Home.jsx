@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import ActionButtons from './ActionButtons';
 import Header from './Header';
 import Modal from './Modal';
 
 export default function Home(){
-
+  const radioRef = useRef(null);
+  const inputRef = useRef(null);
   const [turn, setTurn] = useState(0);
   const [score, setScore] = useState(0);
   const [showModal, setShowModal] = useState(true);
@@ -21,23 +22,23 @@ export default function Home(){
   //! CLICK FUNCTIONS
 
   const handleMultiplier2 = () => {
-    setMultiplier(2);
-    console.log(2);
+    setMultiplier(radioRef.current.value);
+    console.log(radioRef.current.value);
   }
 
   const handleMultiplier3 = () => {
     setMultiplier(3);
-    console.log(3);
+    console.log(radioRef.current.value);
   }
 
   const handleMultiplier4 = () => {
     setMultiplier(4);
-    console.log(4);
+    console.log(radioRef.current.value);
   }
 
   const handleMultiplier5 = () => {
     setMultiplier(5);
-    console.log(5);
+    console.log(radioRef.current.value);
   }
 
   const handleMultiplier10 = () => {
@@ -56,10 +57,8 @@ export default function Home(){
     setShowModal(false);
   }
   
-  const handleInputChange = (e)=>{
-    
-    setInputValue(e.target.value);
-    console.log(e.target.value);
+  const handleInputChange = ()=>{
+    setInputValue(inputRef.current.value);
   }
   
   const handleCheck = () => {
@@ -74,6 +73,7 @@ export default function Home(){
       setShowNextBtn(true);
       setScore(score + 1);
       setTurn(turn+1);
+      setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
 
     }else{
       console.log('Try again...');
@@ -81,14 +81,29 @@ export default function Home(){
     console.log("Check answer!");
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && showNextBtn === false ) {
+      console.log("Pressed Enter for Check");
+      handleCheck();
+    } else if (event.key === 'Enter' && showNextBtn === true){
+      console.log("Pressed Enter for Next");
+      handleNext();
+    } else {
+      return;
+    }
+  };
+
+  //onkeydown = (event) => {console.log(event)};
+
   const handleClear = () => {
     setInputValue('');
     console.log("Input cleared!");
+    
   }
   
   const handleNext = () => {
     handleEquation();
-    handleClear;
+    handleClear();
     console.log(usedNumbers);
     console.log("Next!");
 
@@ -97,8 +112,9 @@ export default function Home(){
     
     console.log('turn: ', turn);
 
-    if (turn === 13){
-      console.log("Task Complete!")
+    if (turn === 12){
+      console.log("Task Complete!");
+
     }
   }
 
@@ -112,7 +128,7 @@ export default function Home(){
     console.log('random number: ', num);
   
     //usedNumbers.push(num);
-    setUsedNumbers(usedNumbers => [...usedNumbers, num]);
+    //setUsedNumbers(usedNumbers => [...usedNumbers, num]);
     setMultiplicand(num);
     setProductValue(multiplier * num);
     
@@ -124,8 +140,10 @@ export default function Home(){
         id='inputElement' 
         className='equation-size product-div' 
         type='number' 
+        ref={inputRef}
         value={inputValue}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         placeholder='?'
       />
     );
@@ -157,9 +175,9 @@ export default function Home(){
 
       </div>
 
-        <br></br>
         {showModal && 
           <Modal 
+            ref={radioRef}
             start={handleStart}
             multiplier={multiplier}
             handleMultiplier2={handleMultiplier2}
