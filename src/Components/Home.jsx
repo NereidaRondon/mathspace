@@ -4,7 +4,6 @@ import Header from './Header';
 import Modal from './Modal';
 
 export default function Home(){
-  const radioRef = useRef(null);
   const inputRef = useRef(null);
   const [turn, setTurn] = useState(0);
   const [score, setScore] = useState(0);
@@ -17,33 +16,12 @@ export default function Home(){
   const [productValue, setProductValue] = useState(null);
   console.log(score);
 
+  //! CLICK OR CHANGE FUNCTIONS
 
-
-  //! CLICK FUNCTIONS
-
-  const handleMultiplier2 = () => {
-    setMultiplier(radioRef.current.value);
-    console.log(radioRef.current.value);
-  }
-
-  const handleMultiplier3 = () => {
-    setMultiplier(3);
-    console.log(radioRef.current.value);
-  }
-
-  const handleMultiplier4 = () => {
-    setMultiplier(4);
-    console.log(radioRef.current.value);
-  }
-
-  const handleMultiplier5 = () => {
-    setMultiplier(5);
-    console.log(radioRef.current.value);
-  }
-
-  const handleMultiplier10 = () => {
-    setMultiplier(10);
-    console.log(10);
+  const handleRadioChange = (num)=>{
+    console.log('radio: ', num);
+    setMultiplier(num);
+    
   }
 
   const handleStart = () => {
@@ -88,8 +66,6 @@ export default function Home(){
     } else if (event.key === 'Enter' && showNextBtn === true){
       console.log("Pressed Enter for Next");
       handleNext();
-    } else {
-      return;
     }
   };
 
@@ -98,7 +74,6 @@ export default function Home(){
   const handleClear = () => {
     setInputValue('');
     console.log("Input cleared!");
-    
   }
   
   const handleNext = () => {
@@ -140,8 +115,8 @@ export default function Home(){
         id='inputElement' 
         className='equation-size product-div' 
         type='number' 
-        ref={inputRef}
         value={inputValue}
+        ref={inputRef}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         placeholder='?'
@@ -177,14 +152,9 @@ export default function Home(){
 
         {showModal && 
           <Modal 
-            ref={radioRef}
             start={handleStart}
             multiplier={multiplier}
-            handleMultiplier2={handleMultiplier2}
-            handleMultiplier3={handleMultiplier3}
-            handleMultiplier4={handleMultiplier4}
-            handleMultiplier5={handleMultiplier5}
-            handleMultiplier10={handleMultiplier10}
+            handleRadioChange={handleRadioChange}
           />
         }
     </>

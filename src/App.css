@@ -40,11 +40,12 @@
 .start-modal{
   background-color: rgb(92, 206, 172);
   border-radius: 20px;
-  width: 60%;
-  height:50%;
+  width: 70%;
+  height:60%;
   position:absolute;
-  top:30%;
-  left:15%;
+  top:20%; 
+  left:0;
+  right:0; 
   margin: auto;
   color:black;
 }
