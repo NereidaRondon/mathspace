@@ -4,6 +4,9 @@ import Header from './Header';
 import Modal from './Modal';
 import Complete from './Complete';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Home(){
   const inputRef = useRef(null);
   const [turn, setTurn] = useState(1);
@@ -49,13 +52,24 @@ export default function Home(){
     console.log('turn: ', turn);
 
     if(Number(inputValue) === productValue){
-      console.log('That is correct!');
+      // console.log('That is correct!');
+      
+      toast.success("That is correct!", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+        closeButton: false
+      })
+
       setShowNextBtn(true);
       setScore(score + 1);
       setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
-      
     }else{
-      console.log('Try again...');
+      // console.log('Try again...');
+      toast.error("Try again...", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+        closeButton: false
+      })
     } 
     console.log("Check answer!");
   }
@@ -148,7 +162,8 @@ export default function Home(){
           next={handleNext}  
           showNextBtn={showNextBtn}
         />
-
+  
+        <ToastContainer />
       </div>
 
         {showModal && 
