@@ -108,3 +108,29 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.complete-modal{
+  background-color: rgba(92, 206, 172,0);
+  position:absolute;
+  top:20%; 
+  left:0;
+  right:0; 
+  margin: auto;
+  color:white;
+}
+.complete-img{
+  border-radius: 20px;
+  filter:drop-shadow(5px 5px 20px rgb(0, 0, 0) );
+  margin:auto;
+  width: 80%;
+  height:65%;
+  position:relative;
+}
+.complete-title{
+  position:absolute;
+  top:25%;
+  left:0;
+  right:0;
+  font-size: 60px;
+  filter:drop-shadow(2px 2px 2px rgb(0, 0, 0) );
+}

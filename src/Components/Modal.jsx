@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-function Modal(props,  radioRef){
+function Modal(props, radioRef){
 
   return(
 

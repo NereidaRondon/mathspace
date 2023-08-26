@@ -2,11 +2,13 @@ import { useState, useRef } from 'react';
 import ActionButtons from './ActionButtons';
 import Header from './Header';
 import Modal from './Modal';
+import Complete from './Complete';
 
 export default function Home(){
   const inputRef = useRef(null);
-  const [turn, setTurn] = useState(0);
+  const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
+  const [showComplete, setShowComplete] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [multiplier, setMultiplier] = useState(0);
   const [inputValue, setInputValue] = useState('');
@@ -50,15 +52,14 @@ export default function Home(){
       console.log('That is correct!');
       setShowNextBtn(true);
       setScore(score + 1);
-      setTurn(turn+1);
       setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
-
+      
     }else{
       console.log('Try again...');
     } 
     console.log("Check answer!");
   }
-
+  
   const handleKeyDown = (event) => {
     if (event.key === 'Enter' && showNextBtn === false ) {
       console.log("Pressed Enter for Check");
@@ -68,29 +69,31 @@ export default function Home(){
       handleNext();
     }
   };
-
+  
   //onkeydown = (event) => {console.log(event)};
-
+  
   const handleClear = () => {
     setInputValue('');
     console.log("Input cleared!");
   }
   
   const handleNext = () => {
-    handleEquation();
-    handleClear();
-    console.log(usedNumbers);
-    console.log("Next!");
-
-    setInputValue('');
-    setShowNextBtn(false);
-    
-    console.log('turn: ', turn);
-
     if (turn === 12){
       console.log("Task Complete!");
+      setShowComplete(true);
+      
+    } else{
 
+      setTurn(turn+1);
+      console.log("Next!");
+      console.log('turn: ', turn);
+      setInputValue('');
+      setShowNextBtn(false);
+      handleEquation();
+      handleClear();
+      console.log(usedNumbers);
     }
+    
   }
 
   function handleEquation(){
@@ -98,12 +101,10 @@ export default function Home(){
     do{
       num = Math.floor(Math.random()*13);
 
-    } while (usedNumbers.includes(num));
+    } while (usedNumbers.includes(num) && turn < 12);
 
     console.log('random number: ', num);
   
-    //usedNumbers.push(num);
-    //setUsedNumbers(usedNumbers => [...usedNumbers, num]);
     setMultiplicand(num);
     setProductValue(multiplier * num);
     
@@ -155,6 +156,13 @@ export default function Home(){
             start={handleStart}
             multiplier={multiplier}
             handleRadioChange={handleRadioChange}
+          />
+        }
+        {showComplete && 
+          <Complete 
+           
+            
+           
           />
         }
     </>
