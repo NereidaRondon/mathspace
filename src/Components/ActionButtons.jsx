@@ -1,24 +1,25 @@
+import { Link } from "react-router-dom";
+
 export default function ActionButtons(props){
+  let showCCBtn = props.showCheckClearBtn;
+  let showNext = props.showNextBtn;
+  let done = props.showDoneBtn;
   
-  let show = props.showNextBtn;
-  let hide = !(props.showNextBtn)
-  
-
-
   return(
 
     <div className="btn-div">
       <div>
-         {hide && <button onClick={props.check}> Check </button>}
+        {showCCBtn && <button onClick={props.check}> Check </button>}
 
-        {show && <button onClick={props.next}> Next </button>}
+        {showNext && <button onClick={props.next}> Next </button>}
+
+        {done && <Link to='/complete'><button>Done</button></Link>}
       </div>
 
       <div>
-        {hide && <button onClick={props.clear}> Clear </button>}
+        {showCCBtn && <button onClick={props.clear}> Clear </button>}
       </div>
         
-    
     </div>
 
   );

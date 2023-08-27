@@ -1,8 +1,21 @@
-#root {
+@import url('https://fonts.googleapis.com/css2?family=Gugi&family=Quicksand:wght@400;500;700&family=Rammetto+One&family=Titan+One&display=swap');
+
+/* 
+font-family: 'Gugi', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Rammetto One', sans-serif;
+font-family: 'Titan One', sans-serif;
+ */
+
+ #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Gugi', sans-serif;
+  font-family: 'Titan One', sans-serif;
+  font-family: 'Rammetto One', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 
@@ -75,6 +88,7 @@
   display: flex;
   flex-direction: row;
   align-content: center;
+  font-family: 'Gugi', cursive;
 
 }
 
@@ -95,7 +109,12 @@
   width: 10rem;
   border-radius: 15px;
 }
-
+#inputElement{
+  font-family: 'Titan One', sans-serif;
+  font-family: 'Rammetto One', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Gugi', sans-serif;
+}
 .equation-size{
   font-size: 5rem;
   font-weight: bold;

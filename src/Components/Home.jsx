@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react';
 import ActionButtons from './ActionButtons';
 import Header from './Header';
-import Modal from './Modal';
-import Complete from './Complete';
+import MenuModal from './MenuModal';
+//import Complete from './Complete';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,13 +11,15 @@ export default function Home(){
   const inputRef = useRef(null);
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
-  const [showComplete, setShowComplete] = useState(false);
+  //const [showComplete, setShowComplete] = useState(false);
   const [showModal, setShowModal] = useState(true);
   const [multiplier, setMultiplier] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [usedNumbers, setUsedNumbers] = useState([0]);
   const [multiplicand, setMultiplicand] = useState(0);
+  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
   const [showNextBtn, setShowNextBtn] = useState(false);
+  const [showDoneBtn, setShowDoneBtn] = useState(false);
   const [productValue, setProductValue] = useState(null);
   console.log(score);
 
@@ -55,18 +57,19 @@ export default function Home(){
       // console.log('That is correct!');
       
       toast.success("That is correct!", {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
         closeButton: false
       })
 
       setShowNextBtn(true);
+      setShowCheckClearBtn(false);
       setScore(score + 1);
       setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
     }else{
       // console.log('Try again...');
       toast.error("Try again...", {
-        position: toast.POSITION.BOTTOM_RIGHT,
+        position: toast.POSITION.TOP_RIGHT,
         theme: "colored",
         closeButton: false
       })
@@ -94,8 +97,9 @@ export default function Home(){
   const handleNext = () => {
     if (turn === 12){
       console.log("Task Complete!");
-      setShowComplete(true);
-      
+      setShowNextBtn(false);
+      setShowCheckClearBtn(false);
+      setShowDoneBtn(true);
     } else{
 
       setTurn(turn+1);
@@ -103,6 +107,7 @@ export default function Home(){
       console.log('turn: ', turn);
       setInputValue('');
       setShowNextBtn(false);
+      setShowCheckClearBtn(true);
       handleEquation();
       handleClear();
       console.log(usedNumbers);
@@ -159,27 +164,25 @@ export default function Home(){
         <ActionButtons 
           check={handleCheck}
           clear={handleClear}
-          next={handleNext}  
+          next={handleNext} 
+          showCheckClearBtn={showCheckClearBtn} 
           showNextBtn={showNextBtn}
+          showDoneBtn={showDoneBtn}
         />
   
         <ToastContainer />
       </div>
 
         {showModal && 
-          <Modal 
+          <MenuModal 
             start={handleStart}
             multiplier={multiplier}
             handleRadioChange={handleRadioChange}
           />
         }
-        {showComplete && 
-          <Complete 
-           
-            
-           
-          />
-        }
+        {/* {showComplete && 
+          <Complete />
+        } */}
     </>
 
 
