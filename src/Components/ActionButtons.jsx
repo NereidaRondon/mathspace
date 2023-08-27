@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+//import { Link , useNavigate} from "react-router-dom";
 
 export default function ActionButtons(props){
   let showCCBtn = props.showCheckClearBtn;
   let showNext = props.showNextBtn;
-  let done = props.showDoneBtn;
-  
+  let exit = props.showExitBtn;
+
   return(
 
     <div className="btn-div">
@@ -13,7 +13,7 @@ export default function ActionButtons(props){
 
         {showNext && <button onClick={props.next}> Next </button>}
 
-        {done && <Link to='/complete'><button>Done</button></Link>}
+        {exit && <button onClick={props.exit}>Exit</button>}
       </div>
 
       <div>

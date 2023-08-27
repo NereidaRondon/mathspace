@@ -35,12 +35,64 @@ font-family: 'Titan One', sans-serif;
   left:0%;
   /* background: linear-gradient(90deg, #015b44, #00564d, #005056, #004a5e, #004364, #003b66, #003263, #06275c); */
 }
+.title{
+  font-family: 'Gugi', sans-serif;
+  font-size: 10rem;
+  margin: -5rem auto 5rem auto;
+  filter: drop-shadow(6px 6px 0px rgb(0, 0, 0));
+  animation: 1.5s linear 0s  rise;
+}
+
+.multiply-btn{
+  animation:
+    5s infinite 1.5s ease-in-out grow-and-shrink;
+}
+#astrontaut{
+  position:absolute;
+  top:40%;
+  left:60%;
+  width: 500px;
+  animation: 
+    10s infinite ease-in alternate slide-in; 
+}
+@keyframes rise {
+  from {
+    transform: translateY(15vh) scale(.1);
+  }
+  to {
+    transform: translateY(0vh) scale(1);
+  }
+}
+ @keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+@keyframes slide-in {
+    from {
+      transform: translateX(5%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+
+
 .title-div{
   background: rgba(0, 0, 0, 0.3);
   border-radius: 200px;
   width: 300px;
   margin: 1rem auto;
   padding: .5rem 1rem 1rem 1rem;
+  font-family: 'Gugi', sans-serif;
+  filter: drop-shadow(3px 3px 2px rgb(0, 0, 0));
 }
 .stars-div{
   /* border: 2px solid rgb(255, 230, 0); */
@@ -53,7 +105,7 @@ font-family: 'Titan One', sans-serif;
 .start-modal{
   background-color: rgb(92, 206, 172);
   border-radius: 20px;
-  width: 70%;
+  width: 90%;
   height:60%;
   position:absolute;
   top:20%; 
@@ -61,10 +113,15 @@ font-family: 'Titan One', sans-serif;
   right:0; 
   margin: auto;
   color:black;
+  font-size: 1.5rem;
 }
 .radio-label{
-  font-size: 1.5rem;
-  margin: 0 2rem 15rem 0;
+  font-size: 2.5rem;
+  margin: 0 3rem 0rem .25rem;
+}
+input[type = radio]{
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .main-div{
   background: linear-gradient(90deg, rgba(2, 47, 25, .9), rgba(0, 46, 33, .9), rgba(0, 44, 42, .9), 
@@ -128,22 +185,21 @@ font-family: 'Titan One', sans-serif;
   justify-content: center;
 }
 
-.complete-modal{
+.complete-div{
   background-color: rgba(92, 206, 172,0);
+  margin: auto;
+  width: 100dvh;
+  top:10%; 
   position:absolute;
-  top:20%; 
   left:0;
   right:0; 
-  margin: auto;
-  color:white;
 }
 .complete-img{
   border-radius: 20px;
   filter:drop-shadow(5px 5px 20px rgb(0, 0, 0) );
   margin:auto;
-  width: 80%;
-  height:65%;
-  position:relative;
+  width: 100dvh;
+  height:auto;
 }
 .complete-title{
   position:absolute;

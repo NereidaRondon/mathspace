@@ -1,15 +1,14 @@
-import { Link } from "react-router-dom";
-import complete from '../assets/complete.svg';
+import { Link } from 'react-router-dom';
+import complete from '../assets/complete.webp';
 
 export default function Complete(){
 
   return(
 
-    <div className="complete-modal">
-      <Link to='/'> <img src={complete} className="complete-img"  /></Link>
+    <main className="complete-div">
+      <Link to='/'> <img src={complete} className="complete-img" alt="Click to go back to the Main menu." width={600} /></Link>
     
-      <h2 className='complete-title'>Well Done!</h2>
-    </div>
+    </main>
     
   );
 }
