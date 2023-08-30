@@ -11,7 +11,7 @@ export default function Home(){
 
   const navigate = useNavigate();
   
-    const inputRef = useRef(null);
+  const inputRef = useRef(null);
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
   const [showModal, setShowModal] = useState(true);
@@ -185,10 +185,10 @@ export default function Home(){
         <section className='flex flex-row my-12 justify-around items-center 
         content-center equation-div w-auto h-auto m-auto'tabIndex={0}>
 
-          <p className='text-8xl px-4 equation-size multiple-area' >{multiplier}</p>
-          <p className='text-5xl px-4 math-signs' >✖️</p>
-          <p className='text-8xl px-4 equation-size multiple-area'>{multiplicand}</p>
-          <p className='text-5xl px-4 math-signs'>🟰</p>
+          <p className='text-8xl text-center w-40 px-2 equation-size multiple-area' >{multiplier}</p>
+          <p className='text-5xl text-center px-2 math-signs' >✖️</p>
+          <p className='text-8xl text-center w-40 px-2 equation-size multiple-area'>{multiplicand}</p>
+          <p className='text-5xl text-center px-2 math-signs'>🟰</p>
           {productBox()}
 
         </section>

@@ -7,7 +7,7 @@ function MultiplyMenu(props){
         What multiplier do you want to practice?
       </h2>
 
-      <div className='my-12 flex flex-wrap justify-center' role='radiogroup' >
+      <div className='my-14 flex flex-wrap justify-center' role='radiogroup' >
 
       <div>
         <input 
@@ -21,7 +21,7 @@ function MultiplyMenu(props){
           onClick={()=>{props.handleRadioChange(2)}}         
         />
 
-        <label className='mr-8 radio-label' htmlFor='two'>2</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='two'>2</label>
       </div>
       <div>
         <input 
@@ -33,7 +33,7 @@ function MultiplyMenu(props){
           value='3' 
           onClick={()=>{props.handleRadioChange(3)}} 
         />
-        <label className='mr-8 radio-label' htmlFor='three'>3</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='three'>3</label>
       </div>
       <div>
         <input 
@@ -45,7 +45,7 @@ function MultiplyMenu(props){
           value='4' 
           onClick={()=>{props.handleRadioChange(4)}} 
         />    
-        <label className='mr-8 radio-label' htmlFor='four'>4</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='four'>4</label>
       </div>
       <div>  
         <input 
@@ -57,7 +57,7 @@ function MultiplyMenu(props){
           value='5' 
           onClick={()=>{props.handleRadioChange(5)}} 
           />      
-        <label className='mr-8 radio-label' htmlFor='five'>5</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='five'>5</label>
       </div>
 
       <div> 
@@ -71,7 +71,7 @@ function MultiplyMenu(props){
           onClick={()=>{props.handleRadioChange(6)}} 
           />  
 
-        <label className='mr-8 radio-label' htmlFor='six'>6</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='six'>6</label>
       </div>
 
       <div> 
@@ -85,7 +85,7 @@ function MultiplyMenu(props){
           onClick={()=>{props.handleRadioChange(10)}} 
           />  
 
-        <label className='mr-8 radio-label' htmlFor='ten'>10</label>
+        <label className='ml-1 mr-8 radio-label' htmlFor='ten'>10</label>
       </div>
 
       </div>

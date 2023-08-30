@@ -1,14 +1,27 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import complete from '../assets/complete.webp';
 
 export default function Complete(){
 
+  const navigate = useNavigate();
+
+  const handleToMainMenu=()=>{
+    navigate('/');
+  }
+
+    const handleKeyDown = (event) => {
+    if(event.key === 'Enter'){
+      console.log("Return to main menu!");
+      handleToMainMenu();
+    }
+     
+  }
   return(
 
-    <main className="flex complete-div w-screen h-screen m-auto items-center">
-      <Link to='/'> <img src={complete} className="m-auto justify-self-center 
-
-place-self-center complete-img w-4/5 max-h-screen " alt="Click to go back to the Main menu." width={600} /></Link>
+    <main className="flex w-screen items-center justify-center h-screen m-auto items-center">
+      
+      <Link to='/'> <img src={complete} className='m-auto rounded-3xl drop-shadow-4xl complete-img w-4/5 max-h-screen ' 
+      alt="Click to go back to the Main menu." width={600} onKeyDown={handleKeyDown}/></Link>
     
     </main>
     

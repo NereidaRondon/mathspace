@@ -3,9 +3,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-*{
+/* *{
   border: 1px solid red;
-}
+} */
 body { 
   background:url('./assets/green-galaxy.webp');
   background-repeat: no-repeat;
