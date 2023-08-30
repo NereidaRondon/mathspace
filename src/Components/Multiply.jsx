@@ -59,7 +59,7 @@ export default function Home(){
       // console.log('That is correct!');
       
       toast.success("That is correct!", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 1500,
         hideProgressBar: true,
         closeOnClick: true,
@@ -76,7 +76,7 @@ export default function Home(){
     }else{
       handleClear();
       toast.error("Try again...", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 1500,
         hideProgressBar: true,
         closeOnClick: true,
@@ -150,7 +150,7 @@ export default function Home(){
     return(
       <input 
         id='inputElement' 
-        className='equation-size product-div' 
+        className='text-8xl w-52 mx-2 text-center rounded-md bg-cyan-950 text-white' 
         type='number' 
         value={inputValue}
         ref={inputRef}
@@ -159,25 +159,36 @@ export default function Home(){
         placeholder='?'
         tabIndex={0}
         name='answer'
-      />
-    );
-  }
-  
+        />
+        );
+      }
+      
   return(
+    
     <>
-   
+      <section className='flex justify-center content-center place-items-center'>
+
+        {showModal && 
+          <MultiplyMenu 
+          start={handleStart}
+          multiplier={multiplier}
+          handleRadioChange={handleRadioChange}
+          />
+        }
+      </section>
+
       <Header score={score} />
 
-      <main className='main-div flex justify-items-center justify-center
-items-center w-screen h-3/4 w-5/6 p-12 rounded-lg bg-cover'> 
+      <main className='main-div m-auto flex justify-center items-center w-2/3 h-7/12 rounded-xl bg-cover text-white'> 
+        
          
-        <section className='flex flex-row mx-auto my-12 mr-8 items-center 
-content-center equation-div w-3/5 h-auto  'tabIndex={0}>
+        <section className='flex flex-row my-12 justify-around items-center 
+        content-center equation-div w-auto h-auto m-auto'tabIndex={0}>
 
-          <p className='text-9xl equation-size multiple-area' >{multiplier}</p>
-          <p className='text-6xl math-signs' >✖️</p>
-          <p className='text-9xl equation-size multiple-area'>{multiplicand}</p>
-          <p className='text-6xl math-signs'>🟰</p>
+          <p className='text-8xl px-4 equation-size multiple-area' >{multiplier}</p>
+          <p className='text-5xl px-4 math-signs' >✖️</p>
+          <p className='text-8xl px-4 equation-size multiple-area'>{multiplicand}</p>
+          <p className='text-5xl px-4 math-signs'>🟰</p>
           {productBox()}
 
         </section>
@@ -193,28 +204,13 @@ content-center equation-div w-3/5 h-auto  'tabIndex={0}>
           />
   
         <ToastContainer 
-          className='w-1/3 text-5xl'
+          className='w-auto text-3xl'
           limit={2}
           newestOnTop
           rtl={false}
           pauseOnFocusLoss={false} 
         />
-
-      </main>
-
-        {showModal && 
-          <MultiplyMenu 
-          start={handleStart}
-          multiplier={multiplier}
-          handleRadioChange={handleRadioChange}
-          />
-        }
-        {/* {showComplete && 
-          <Complete />
-        } */}
-      
+      </main> 
     </>
-
-
   );
 }

@@ -8,7 +8,7 @@ export default function Stars(props){
       stars += '⭐';
     }
     //console.log(stars);
-    return `${stars}  ${total}`;
+    return `${total}  ${stars}`;
   }
 
   return(

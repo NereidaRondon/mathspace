@@ -4,8 +4,13 @@ export default {
   theme: {
     extend: {
       dropShadow: {
-        '3xl': '3px 5px 5px rgba(0, 0, 0, 0.7)',
-        '4xl': '5px 5px 2px rgba(3, 3, 141, 0.8)'
+        '3xl': '3px 4px 3px rgba(0, 0, 0, 0.7)',
+        '4xl': '1px 1px 3px rgb(0, 0, 0)',
+        '5xl': '5px 5px 2px rgba(0, 71, 212)'
+      },
+      fontFamily: {
+        'gugi': ['Gugi', 'sans-serif'],
+        'quicksand':['Quicksand', 'sans-serif']
       }
 
     },

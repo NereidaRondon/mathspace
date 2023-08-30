@@ -6,20 +6,85 @@
 *{
   border: 1px solid red;
 }
-
 body { 
-margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100%;
-  min-height: 100dvh;
-  background:url('./assets/green-galaxy.jpg');
+  background:url('./assets/green-galaxy.webp');
   background-repeat: no-repeat;
-  background-size: cover;
-  font-family: 'Quicksand', sans-serif;
+  background-size: contain;
+  background-size: cover; 
+} 
+/* ------------------------- Landing Page ------------------------- */
+
+
+.title{
+  animation: 1.5s linear 0s  rise;
+}
+.multiply-btn{
+  animation:
+    5s infinite 1.5s ease-in-out grow-and-shrink;
+}
+#astrontaut{
+  animation: 
+    10s infinite ease-in alternate slide-in; 
+}
+@keyframes rise {
+  from {
+    transform: translateY(15vh) scale(.1);
+  }
+  to {
+    transform: translateY(0vh) scale(1);
+  }
+}
+ @keyframes grow-and-shrink {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+@keyframes slide-in {
+    from {
+      transform: translateX(5%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+/* ----------- END OF LANDING PAGE ------------ */
+
+/* ----------- MULTIPLY MENU START MODAL ------------ */
+
+.title-div{
+  font-family: 'Gugi', sans-serif;
+}
+.start-modal{
+  background: radial-gradient(circle at 50% 50%,
+    #5cceac, #57cead, #4acfaf, #36d0b6, 
+    #27c8bb, #1cb7b9, #1398a8, #0b7996);
+}
+input[type=radio]{
+  width: 1.25rem;
+  height: 1.25rem;
+}
+/* ----------- END OF MULTIPLY MENU START MODAL ------------ */
+
+/* ----------- MULTIPLY PAGE ------------ */
+
+.main-div{
+  background: linear-gradient(90deg, rgba(2, 47, 25, .9), rgba(0, 46, 33, .9), rgba(0, 44, 42, .9), 
+  rgba(0, 41, 50, .9), rgba(0, 38, 57, .9), rgba(0, 34, 60, .9), rgba(0, 30, 61, .9), rgba(0, 24, 58, .9));
 }
 
-/* --------- Landing Page ---------- */
+#inputElement{
+  font-family: 'Titan One', sans-serif;
+  font-family: 'Rammetto One', sans-serif;
+  font-family: 'Gugi', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+/* ----------- END OF MULTIPLY PAGE ------------ */
 
 /* ------Button Hover Glow Effect------------ */
 .glow-on-hover:before {
@@ -63,78 +128,3 @@ margin: 0;
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
-.title{
-  font-family: 'Gugi', sans-serif;
-  animation: 1.5s linear 0s  rise;
-}
-.multiply-btn{
-  animation:
-    5s infinite 1.5s ease-in-out grow-and-shrink;
-}
-#astrontaut{
-  position:absolute;
-  top:40%;
-  left:60%;
-  width: 500px;
-  animation: 
-    10s infinite ease-in alternate slide-in; 
-}
-@keyframes rise {
-  from {
-    transform: translateY(15vh) scale(.1);
-  }
-  to {
-    transform: translateY(0vh) scale(1);
-  }
-}
- @keyframes grow-and-shrink {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(.9);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-@keyframes slide-in {
-    from {
-      transform: translateX(5%);
-    }
-    to {
-      transform: translateX(0%);
-    }
-  }
-/* ----------- END OF LANDING PAGE ------------ */
-/* ----------- MULTIPLY MENU START MODAL ------------ */
-
-.title-div{
-  font-family: 'Gugi', sans-serif;
-}
-.start-modal{
-  background-color: #5cceac;
-  background: radial-gradient(circle at 50% 50%,
-    #5cceac, #5cceac, #57cead, #57cead, #4acfaf,
-    #4acfaf, #36d0b6, #36d0b6, #27c8bb, #1cb7b9, 
-    #1398a8, #0b7996, #065f84, #024c75, #013f6a);
-}
-input[type=radio]{
-  width: 1.5rem;
-  height: 1.5rem;
-}
-/* ----------- END OF MULTIPLY MENU START MODAL ------------ */
-/* ----------- MULTIPLY PAGE ------------ */
-
-.main-div{
-  background: linear-gradient(90deg, rgba(2, 47, 25, .9), rgba(0, 46, 33, .9), rgba(0, 44, 42, .9), 
-  rgba(0, 41, 50, .9), rgba(0, 38, 57, .9), rgba(0, 34, 60, .9), rgba(0, 30, 61, .9), rgba(0, 24, 58, .9));
-}
-
-#inputElement{
-  font-family: 'Titan One', sans-serif;
-  font-family: 'Rammetto One', sans-serif;
-  font-family: 'Gugi', sans-serif;
-  font-family: 'Quicksand', sans-serif;
-}
-/* ----------- END OF MULTIPLY PAGE ------------ */
