@@ -5,28 +5,24 @@ import Header from './Header';
 import MultiplyMenu from './MultiplyMenu';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Counters from './Counters';
 
 export default function Home(){
 
-  const navigate = useNavigate();
-  
   const inputRef = useRef(null);
+  const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
-  const [showModal, setShowModal] = useState(true);
-  //const [showComplete, setShowComplete] = useState(false);
   const [multiplier, setMultiplier] = useState(0);
+  const [showModal, setShowModal] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [usedNumbers, setUsedNumbers] = useState([0]);
   const [multiplicand, setMultiplicand] = useState(0);
-  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [productValue, setProductValue] = useState(null);
+  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
   console.log(score);
-
-  //! CLICK OR CHANGE FUNCTIONS
 
   const handleRadioChange = (num)=>{
     console.log('radio: ', num);
@@ -150,7 +146,7 @@ export default function Home(){
     return(
       <input 
         id='inputElement' 
-        className='text-8xl w-52 mx-2 text-center rounded-md bg-cyan-950 text-white' 
+        className='border border-blue-400 text-8xl w-52 mx-2 text-center rounded-md bg-cyan-950 text-white' 
         type='number' 
         value={inputValue}
         ref={inputRef}
@@ -179,11 +175,11 @@ export default function Home(){
 
       <Header score={score} />
 
-      <main className='main-div m-auto flex justify-center items-center w-2/3 h-7/12 rounded-xl bg-cover text-white'> 
+      <main className='main-div m-auto flex justify-center items-center w-3/4 h-7/12 rounded-2xl bg-cover text-white'> 
         
          
-        <section className='flex flex-row my-12 justify-around items-center 
-        content-center equation-div w-auto h-auto m-auto'tabIndex={0}>
+        <section className='flex flex-row my-12 w-auto justify-around items-center 
+        content-center equation-div  h-auto m-auto'tabIndex={0}>
 
           <p className='text-8xl text-center w-40 px-2 equation-size multiple-area' >{multiplier}</p>
           <p className='text-5xl text-center px-2 math-signs' >✖️</p>
@@ -210,7 +206,13 @@ export default function Home(){
           rtl={false}
           pauseOnFocusLoss={false} 
         />
-      </main> 
+      </main>
+
+      <Counters 
+        multiplier={multiplier}  
+        multiplicand={multiplicand} 
+      /> 
+    
     </>
   );
 }

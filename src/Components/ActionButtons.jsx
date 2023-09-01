@@ -6,21 +6,20 @@ export default function ActionButtons(props){
   let exit = props.showExitBtn;
 
   return(
+    <section className='flex flex-wrap justify-around h-60 w-60'>
+      
+      <div className='flex flex-wrap'>
+        {showCCBtn && <button onClick={props.check} className='border border-green-300 text-3xl w-36 px-2 py-5 my-4 bg-green-700 rounded-xl mx-auto text-center'>Check</button>}
 
-    <section className='flex flex-wrap items-center h-60 w-48 pr-10 '>
-      <div className=''>
-        {showCCBtn && <button onClick={props.check} className='text-4xl px-6 py-4 bg-green-700 w-36 my-5 rounded-lg'> Check </button>}
+        {showNext && <button onClick={props.next} className='border border-blue-300 text-3xl w-36 px-2 py-5 my-20 bg-blue-900 rounded-xl text-center'>Next</button>}
 
-        {showNext && <button onClick={props.next} className='text-4xl px-6 py-4 bg-blue-900 w-36 my-5 rounded-lg'> Next </button>}
-
-        {exit && <button onClick={props.exit} className='text-4xl px-6 py-4 bg-teal-300 text-black w-36 my-5 rounded-lg'>Exit</button>}
+        {exit && <button onClick={props.exit} className='border border-teal-900 text-3xl w-36 px-2 py-5 my-20 bg-teal-300 text-black rounded-xl text-center'>Exit</button>}
       </div>
 
       <div>
-        {showCCBtn && <button onClick={props.clear} className='text-4xl px-6 py-4 bg-slate-950 w-36 my-5 rounded-lg'> Clear </button>}
+        {showCCBtn && <button onClick={props.clear} className='border border-teal-400 text-3xl w-36 px-2 py-6 my-4 bg-slate-950 rounded-xl'>Clear</button>}
       </div>
         
     </section>
-
   );
 }
