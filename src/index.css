@@ -9,7 +9,7 @@
 body { 
   background:url('./assets/green-galaxy.webp');
   background-repeat: no-repeat;
-  background-size: contain;
+  /* background-size: contain; */
   background-size: cover; 
 } 
 /* ------------------------- Landing Page ------------------------- */

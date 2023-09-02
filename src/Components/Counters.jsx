@@ -25,8 +25,8 @@ export default function Counters(props){
     const num2x = allRows.map((x) => {
       return(
         <div className='flex' id={x.key}>
-          <div className='my-1 mx-2 pt-3 w-16 h-16 bg-black rounded-full text-center'>{x[0]}</div>
-          <div className='my-1 p-3 border-2 border-teal-500 rounded-full' > {x[1]}</div> 
+          {/* <div className='my-1 mx-2 pt-3 w-16 h-16 bg-black rounded-full text-center'>{x[0]}</div> */}
+          <div className='m-1 p-7 w-40 h-40 border-2 border-teal-500 rounded-full text-center' > {x[1]}</div> 
         </div>
       );
     });
@@ -35,7 +35,7 @@ export default function Counters(props){
   }
 
   return(
-    <section className='p-1 mx-20 my-10 text-3xl drop-shadow-4xl text-white'>
+    <section className='flex flex-row flex-wrap gap-2 p-1 mx-20 my-10 text-1xl drop-shadow-4xl text-white'>
       <Counter />
     </section>
   );
