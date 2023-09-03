@@ -146,7 +146,7 @@ export default function Home(){
     return(
       <input 
         id='inputElement' 
-        className='border border-blue-400 text-8xl w-52 mx-2 text-center rounded-md bg-cyan-950 text-white' 
+        className='flex-auto border-2 border-blue-400 text-2xl sm:text-6xl w-16 sm:w-32 mx-2 sm:mx-4 text-center rounded-md bg-transparent text-white' 
         type='number' 
         value={inputValue}
         ref={inputRef}
@@ -162,7 +162,7 @@ export default function Home(){
   return(
     
     <>
-      <section className='flex justify-center content-center place-items-center'>
+      <section className='flex-auto justify-center content-center place-items-center'>
 
         {showModal && 
           <MultiplyMenu 
@@ -175,16 +175,16 @@ export default function Home(){
 
       <Header score={score} />
 
-      <main className='main-div m-auto flex justify-center items-center w-3/4 h-7/12 rounded-2xl bg-cover text-white'> 
+      <main className='multiply-page m-auto flex justify-center items-center w-7/12  rounded-2xl bg-cover text-white'> 
         
          
         <section className='flex flex-row my-12 w-auto justify-around items-center 
         content-center equation-div  h-auto m-auto'tabIndex={0}>
 
-          <p className='text-8xl text-center w-40 px-2 equation-size multiple-area' >{multiplier}</p>
-          <p className='text-5xl text-center px-2 math-signs' >✖️</p>
-          <p className='text-8xl text-center w-40 px-2 equation-size multiple-area'>{multiplicand}</p>
-          <p className='text-5xl text-center px-2 math-signs'>🟰</p>
+          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area' >{multiplier}</p>
+          <p className='flex-auto text-lg sm:text-4xl text-center px-1 sm:px-2 math-signs' >✖️</p>
+          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area'>{multiplicand}</p>
+          <p className='flex-auto text-lg sm:text-4xl text-center math-signs'>🟰</p>
           {productBox()}
 
         </section>

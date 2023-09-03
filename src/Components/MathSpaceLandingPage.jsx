@@ -5,7 +5,7 @@ export default function MathSpace(){
 
   return(
     <>
-    <main className='flex flex-col m-auto w-4/5 h-screen items-center justify-center text-center '>
+    <main className='landingpage flex flex-col m-auto w-screen h-screen items-center justify-center text-center '>
       
       <h1 className="font-gugi w-4/5 mb-48 drop-shadow-5xl text-white text-9xl title ">MathSpace</h1>
       

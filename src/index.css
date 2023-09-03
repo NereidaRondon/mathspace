@@ -6,14 +6,18 @@
 /* *{
   border: 1px solid red;
 } */
-body { 
-  background:url('./assets/green-galaxy.webp');
-  background-repeat: no-repeat;
-  /* background-size: contain; */
-  background-size: cover; 
-} 
+body{
+ background: linear-gradient(180deg, 
+ #001d43, #000000);
+}
+
 /* ------------------------- Landing Page ------------------------- */
 
+.landingpage{
+  background:url('./assets/green-galaxy.webp');
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
 
 .title{
   animation: 1.5s linear 0s  rise;
@@ -73,10 +77,10 @@ input[type=radio]{
 /* ----------- END OF MULTIPLY MENU START MODAL ------------ */
 
 /* ----------- MULTIPLY PAGE ------------ */
-.main-div{
+/* .main-div{
   background: linear-gradient(90deg, rgb(2, 47, 25), rgb(0, 46, 33), rgb(0, 44, 42), 
   rgb(0, 41, 50), rgb(0, 38, 57), rgb(0, 34, 60), rgb(0, 30, 61), rgb(0, 24, 58));
-}
+} */
 
 #inputElement{
   font-family: 'Titan One', sans-serif;
