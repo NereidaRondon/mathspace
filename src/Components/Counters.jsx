@@ -7,17 +7,18 @@ export default function Counters(props){
   
   const Counter = () =>{
     console.log(multiplier);
-    let counters = '';
-    const designs = ['👽', '🚀', '⚪', '⭐', '🤖', '🪐', '🌎', '🛸' ];
-    let index = Math.floor(Math.random()*8);
-    let design = designs[index];
-    //const [design, setDesign] = useState('');
-    console.log(index);
+    // const designs = ['👽', '🚀', '⚪', '⭐', '🤖', '🪐', '🌎', '🛸' ];
+    // let emoji = Math.floor(Math.random()*8);
+    // let design = designs[emoji];
+    // //const [design, setDesign] = useState('');
+    // console.log(emoji);
+    // console.log(design);
     
-
+    let counters = '';
+    
     for(let j=0; j < multiplicand; j++){
       
-      counters += ` ${design} `;
+      counters += ` ${props.design} `;
     }
     
     const allRows=[];

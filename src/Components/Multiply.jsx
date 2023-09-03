@@ -8,12 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Counters from './Counters';
 
 export default function Home(){
-
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
+  const [design, setDesign] = useState('⭐');
   const [multiplier, setMultiplier] = useState(0);
+  const [multiplierText, setMultiplierText] = useState(0);
   const [showModal, setShowModal] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [usedNumbers, setUsedNumbers] = useState([0]);
@@ -22,35 +23,37 @@ export default function Home(){
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [productValue, setProductValue] = useState(null);
   const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
-  console.log(score);
-
+ 
   const handleRadioChange = (num)=>{
     console.log('radio: ', num);
-    setMultiplier(num);
+    setMultiplierText(num);
   }
 
   const handleStart = () => {
+    console.log(multiplierText);
+    setMultiplier(multiplierText);
     handleEquation();
     setInputValue('');
     setTurn(1);
     console.log('turn: ', turn);
-    console.log(multiplier);
     setScore(0);
     setUsedNumbers([0]);
     setShowModal(false);
+    handleEmoji();
   }
   
   const handleInputChange = ()=>{
     setInputValue(inputRef.current.value);
+    console.log(`This is my input: `+ inputRef.current.value);
   }
   
   const handleCheck = () => {
     console.log(usedNumbers);
+    console.log(multiplier);
     console.log(inputValue);
     console.log(productValue);
     console.log(Number(inputValue) === productValue);
     console.log('turn: ', turn);
-
     if(Number(inputValue) === productValue){
       // console.log('That is correct!');
       
@@ -114,7 +117,8 @@ export default function Home(){
       setShowCheckClearBtn(false);
       setShowExitBtn(true);
     } else{
-
+      
+      handleEmoji();
       setTurn(turn+1);
       console.log("Next!");
       console.log('turn: ', turn);
@@ -138,10 +142,16 @@ export default function Home(){
     console.log('random number: ', num);
   
     setMultiplicand(num);
-    setProductValue(multiplier * num);
+    setProductValue(multiplierText * num);
     
   }
-
+  const handleEmoji = () => {
+    const designs = ['👽', '🚀', '⭐', '🤖', '🪐', '🌎', '🛸' ];
+    let emoji = Math.floor(Math.random()*7);
+    setDesign(designs[emoji]);
+    console.log(emoji);
+    console.log(design);
+  }
   const productBox = ( )=> {
     return(
       <input 
@@ -167,7 +177,7 @@ export default function Home(){
         {showModal && 
           <MultiplyMenu 
           start={handleStart}
-          multiplier={multiplier}
+          multiplier={multiplierText}
           handleRadioChange={handleRadioChange}
           />
         }
@@ -209,6 +219,7 @@ export default function Home(){
       </main>
 
       <Counters 
+        design={design}
         multiplier={multiplier}  
         multiplicand={multiplicand} 
       /> 
