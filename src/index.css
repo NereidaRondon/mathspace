@@ -7,8 +7,9 @@
   border: 1px solid red;
 } */
 body{
- background: linear-gradient(180deg, 
- #001d43, #000000);
+  background: linear-gradient(180deg, #001d43 0%, #000000 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* ------------------------- Landing Page ------------------------- */
