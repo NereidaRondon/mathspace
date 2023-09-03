@@ -29,7 +29,7 @@ export default function Counters(props){
       return(
         <div className='flex flex-wrap content-center justify-center items-center' key={x[0]}>
           {/* <div className='my-1 mx-2 pt-3 w-16 h-16 bg-black rounded-full text-center'>{x[0]}</div> */}
-          <div className='flex flex-wrap p-3 sm:p-6 m-2 sm:m-4 w-32 h-32 sm:w-48 sm:h-48 border-2 border-teal-500 rounded-full text-center content-center justify-center' ><p className='text-center m-auto '>{x[1]}</p></div> 
+          <div className='flex flex-wrap p-3 sm:p-6 m-2 sm:m-4 w-32 h-32 sm:w-48 sm:h-48 border-2 border-teal-500 rounded-full text-center content-center justify-center' >{x[1]}</div> 
         </div>
       );
     });
