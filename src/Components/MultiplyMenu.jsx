@@ -2,12 +2,12 @@ function MultiplyMenu(props){
 
   return(
 
-    <section className='z-50 w-4/5 h-4/5 absolute top-28 p-8 text-3xl text-center start-modal rounded-3xl border border-teal-800'>
-      <h2 className='my-8'>
+    <section className='z-50 w-11/12 h-4/5 absolute top-20 left-auto m-auto p-1 text-2xl text-center start-modal rounded-2xl border border-teal-800'>
+      <h2 className='my-8 text-2xl'>
         What multiplier do you want to practice?
       </h2>
 
-      <div className='my-16 flex flex-wrap justify-center' role='radiogroup' >
+      <div className='mx-5 my-10 flex flex-wrap justify-center gap-8' role='radiogroup' >
 
         <div>
           <input 
@@ -21,7 +21,7 @@ function MultiplyMenu(props){
             onClick={()=>{props.handleRadioChange(2)}}         
           />
 
-          <label className='ml-1 mr-8 radio-label' htmlFor='two'>2</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='two'>2</label>
         </div>
         <div>
           <input 
@@ -33,7 +33,7 @@ function MultiplyMenu(props){
             value='3' 
             onClick={()=>{props.handleRadioChange(3)}} 
           />
-          <label className='ml-1 mr-8 radio-label' htmlFor='three'>3</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='three'>3</label>
         </div>
         <div>
           <input 
@@ -45,7 +45,7 @@ function MultiplyMenu(props){
             value='4' 
             onClick={()=>{props.handleRadioChange(4)}} 
           />    
-          <label className='ml-1 mr-8 radio-label' htmlFor='four'>4</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='four'>4</label>
         </div>
         <div>  
           <input 
@@ -57,7 +57,7 @@ function MultiplyMenu(props){
             value='5' 
             onClick={()=>{props.handleRadioChange(5)}} 
             />      
-          <label className='ml-1 mr-8 radio-label' htmlFor='five'>5</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='five'>5</label>
         </div>
 
         <div> 
@@ -71,7 +71,7 @@ function MultiplyMenu(props){
             onClick={()=>{props.handleRadioChange(6)}} 
             />  
 
-          <label className='ml-1 mr-8 radio-label' htmlFor='six'>6</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='six'>6</label>
         </div>
 
         <div> 
@@ -85,15 +85,15 @@ function MultiplyMenu(props){
             onClick={()=>{props.handleRadioChange(10)}} 
             />  
 
-          <label className='ml-1 mr-8 radio-label' htmlFor='ten'>10</label>
+          <label className='ml-1 mr-5 radio-label' htmlFor='ten'>10</label>
         </div>
 
       </div>
 
 
-      <h2 className='my-16'>Let&apos;s practice the {props.multiplier} times tables!</h2>
+      <h2 className='my-10'>Let&apos;s practice the {props.multiplier} times tables!</h2>
     
-      <button className='mt-10 px-10 py-8 bg-blue-900 font-bold text-white text-4xl rounded-2xl drop-shadow-3xl glow-on-hover' onClick={props.start}>START</button>
+      <button className='px-8 py-6 bg-blue-900 font-bold text-white text-2xl md:text-4xl rounded-2xl drop-shadow-3xl glow-on-hover' onClick={props.start}>START</button>
 
     </section>
   );

@@ -172,7 +172,7 @@ export default function Home(){
   return(
     
     <>
-      <section className='flex-auto justify-center content-center place-items-center'>
+      <section className='flex justify-center  content-center place-items-center'>
 
         {showModal && 
           <MultiplyMenu 
