@@ -7,12 +7,6 @@ export default function Counters(props){
   
   const Counter = () =>{
     console.log(multiplier);
-    // const designs = ['👽', '🚀', '⚪', '⭐', '🤖', '🪐', '🌎', '🛸' ];
-    // let emoji = Math.floor(Math.random()*8);
-    // let design = designs[emoji];
-    // //const [design, setDesign] = useState('');
-    // console.log(emoji);
-    // console.log(design);
     
     let counters = '';
     

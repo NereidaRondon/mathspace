@@ -11,6 +11,7 @@ body{
   background: linear-gradient(180deg, #001d43 0%, #000000 100%);
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
 }
 
 /* ------------------------- Landing Page ------------------------- */
@@ -67,22 +68,14 @@ body{
   font-family: 'Gugi', sans-serif;
 }
 .start-modal{
-    background: radial-gradient(circle at 50% 50%, #a3f5f4, #a3f5f4, #98f1ee, #8cede8, 
-      #81e9e2, #76e5db, #6ae1d4, #5eddcd, #52d9c6, #44d4be, #2dcbb6, #24c6b6, 
-      #07b7b4, #01b2b3, #00adb1, #01a7af, #05a2ad, #0c9dab, #1398a8);
-      background: radial-gradient(circle at 50% 50%, #81e9e2, #78e1dd, #6fdad8, #67d3d2, #5ecbcd, #55c4c8, #4cbcc3, #42b5bd, #39aeb8, #2ea6b3, #229fad, #1398a8);
+  background: radial-gradient(circle at 50% 50%, #81e9e2, #78e1dd, #6fdad8, #67d3d2, 
+  #5ecbcd, #55c4c8, #4cbcc3, #42b5bd, #39aeb8, #2ea6b3, #229fad, #1398a8);
 }
 input[type=radio]{
   width: 1.25rem;
   height: 1.25rem;
 }
 /* ----------- END OF MULTIPLY MENU START MODAL ------------ */
-
-/* ----------- MULTIPLY PAGE ------------ */
-/* .main-div{
-  background: linear-gradient(90deg, rgb(2, 47, 25), rgb(0, 46, 33), rgb(0, 44, 42), 
-  rgb(0, 41, 50), rgb(0, 38, 57), rgb(0, 34, 60), rgb(0, 30, 61), rgb(0, 24, 58));
-} */
 
 #inputElement{
   font-family: 'Titan One', sans-serif;

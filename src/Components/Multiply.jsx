@@ -13,8 +13,8 @@ export default function Home(){
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
   const [design, setDesign] = useState('⭐');
-  const [multiplier, setMultiplier] = useState(0);
-  const [multiplierText, setMultiplierText] = useState(0);
+  const [multiplier, setMultiplier] = useState(1);
+  const [multiplierText, setMultiplierText] = useState(1);
   const [showModal, setShowModal] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [usedNumbers, setUsedNumbers] = useState([0]);
@@ -172,7 +172,7 @@ export default function Home(){
   return(
     
     <>
-      <section className='flex justify-center  content-center place-items-center'>
+      <section className='flex justify-center content-center place-items-center'>
 
         {showModal && 
           <MultiplyMenu 
@@ -185,11 +185,10 @@ export default function Home(){
 
       <Header score={score} />
 
-      <main className='multiply-page m-auto flex justify-center items-center w-7/12  rounded-2xl bg-cover text-white'> 
+      <main className='m-auto flex flex-col flex-wrap justify-center items-center w-11/12 text-white'> 
         
          
-        <section className='flex flex-row my-12 w-auto justify-around items-center 
-        content-center equation-div  h-auto m-auto'tabIndex={0}>
+        <section className='flex my-6 w-auto justify-around items-center content-center equation-div h-auto m-auto' tabIndex={0}>
 
           <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area' >{multiplier}</p>
           <p className='flex-auto text-lg sm:text-4xl text-center px-1 sm:px-2 math-signs' >✖️</p>
