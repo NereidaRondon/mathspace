@@ -6,7 +6,7 @@ export default function ActionButtons(props){
   let exit = props.showExitBtn;
 
   return(
-    <div className='flex flex-wrap justify-around w-48 md:w-72'>
+    <div className='flex flex-wrap justify-around w-48 md:w-72 py-1'>
       
       <div className=''>
         {showCCBtn && <button onClick={props.clear} className='border border-teal-100 text-2xl text-black w-20 h-16 md:h-20 px-2 m-2 bg-sky-500 rounded-full'>clear</button>}

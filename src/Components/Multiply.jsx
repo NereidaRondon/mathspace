@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ActionButtons from './ActionButtons';
 import Header from './Header';
 import MultiplyMenu from './MultiplyMenu';
@@ -13,8 +13,8 @@ export default function Home(){
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
   const [design, setDesign] = useState('⭐');
+  //const [disable, setDisable] = useState(false);
   const [multiplier, setMultiplier] = useState(1);
-  const [multiplierText, setMultiplierText] = useState(1);
   const [showModal, setShowModal] = useState(true);
   const [inputValue, setInputValue] = useState('');
   const [usedNumbers, setUsedNumbers] = useState([0]);
@@ -22,6 +22,7 @@ export default function Home(){
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [productValue, setProductValue] = useState(null);
+  const [multiplierText, setMultiplierText] = useState(1);
   const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
  
   const handleRadioChange = (num)=>{
@@ -54,9 +55,7 @@ export default function Home(){
     console.log(productValue);
     console.log(Number(inputValue) === productValue);
     console.log('turn: ', turn);
-    if(Number(inputValue) === productValue){
-      // console.log('That is correct!');
-      
+    if(Number(inputValue) === productValue){      
       toast.success("That is correct!", {
         position: "bottom-right",
         autoClose: 1500,
@@ -67,11 +66,12 @@ export default function Home(){
         progress: undefined,
         theme: "colored",
       })
-
       setShowNextBtn(true);
       setShowCheckClearBtn(false);
       setScore(score + 1);
       setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
+      //setDisable(!disable);
+
     }else{
       handleClear();
       toast.error("Try again...", {
@@ -117,7 +117,6 @@ export default function Home(){
       setShowCheckClearBtn(false);
       setShowExitBtn(true);
     } else{
-      
       handleEmoji();
       setTurn(turn+1);
       console.log("Next!");
@@ -128,6 +127,7 @@ export default function Home(){
       handleEquation();
       handleClear();
       console.log(usedNumbers);
+      //setDisable(!disable);
     }
     
   }
@@ -165,6 +165,7 @@ export default function Home(){
         placeholder='?'
         tabIndex={0}
         name='answer'
+        //disabled={disable}
         />
         );
       }
@@ -215,14 +216,14 @@ export default function Home(){
           rtl={false}
           pauseOnFocusLoss={false} 
         />
-      </main>
 
       <Counters 
         design={design}
         multiplier={multiplier}  
         multiplicand={multiplicand} 
-      /> 
+        /> 
     
+      </main>
     </>
   );
 }

@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 export default function Counters(props){
   
   const multiplier = props.multiplier;
@@ -22,10 +20,11 @@ export default function Counters(props){
   
     const groups = allRows.map((x) => {
       return(
-        <div className='flex flex-wrap content-center justify-center items-center' key={x[0]}>
-          {/* <div className='my-1 mx-2 pt-3 w-16 h-16 bg-black rounded-full text-center'>{x[0]}</div> */}
-          <div className='flex flex-wrap p-3 sm:p-6 m-2 sm:m-4 w-32 h-32 sm:w-48 sm:h-48 border-2 border-teal-500 rounded-full text-center content-center justify-center' >{x[1]}</div> 
-        </div>
+        <section className='flex flex-wrap flex-row content-center justify-center items-center' key={x[0]}>
+          <div className='flex flex-wrap text-sm md:text-2xl lg:text-3xl w-16 h-32 md:w-48 md:h-48 border-2 border-teal-500 rounded-xl md:rounded-full text-center content-center justify-center' >
+            {x[1]}
+          </div> 
+        </section>
       );
     });
 
@@ -33,7 +32,7 @@ export default function Counters(props){
   }
 
   return(
-    <section className='flex flex-row flex-wrap auto-rows-auto gap-2 justify-center p-1 mx-20 my-10 text-md sm:text-xl md:text-2xl drop-shadow-4xl text-white'>
+    <section className='w-11/12 md:w-11/12 flex flex-row flex-wrap auto-rows-auto gap-y-6 gap-x-4 p-1 my-2 drop-shadow-4xl text-white content-center justify-center items-center'>
       <Counter />
     </section>
   );
