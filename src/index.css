@@ -97,6 +97,7 @@ input[type=radio]{
     filter: blur(5px);
     width: calc(100% + 4px);
     height: calc(100% + 4px);
+    -webkit-animation: glowing 20s linear infinite;
     animation: glowing 20s linear infinite;
     opacity: 0;
     transition: opacity .3s ease-in-out;
@@ -123,6 +124,11 @@ input[type=radio]{
     border-radius: 10px;
 }
 @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+@-webkit-@keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
