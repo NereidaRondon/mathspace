@@ -10,6 +10,7 @@ export default function AppRouter(){
         <Route path="/" element={ <MathSpaceLandingPage /> } />
         <Route path="/multiply" element={ <Multiply/> } /> 
         <Route path="/complete" element={ <Complete /> }/>
+        <Route path="/*" element={ <MathSpaceLandingPage /> }/>
     </Routes>
   );
 

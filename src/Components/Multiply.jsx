@@ -165,10 +165,19 @@ export default function Home(){
         placeholder='?'
         tabIndex={0}
         name='answer'
+        maxLength="3"
+        required
         //disabled={disable}
-        />
-        );
-      }
+      />
+    );
+  }
+  // const correctAnswer = ()=> {
+  //   return(
+  //     <div className='flex-auto  text-2xl sm:text-6xl w-16 sm:w-32 mx-2 sm:mx-4 text-center rounded-md bg-transparent text-white'>
+  //       {productValue}
+  //     </div>
+  //   );
+  // }
       
   return(
     
@@ -196,6 +205,7 @@ export default function Home(){
           <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area'>{multiplicand}</p>
           <p className='flex-auto text-lg sm:text-4xl text-center math-signs'>🟰</p>
           {productBox()}
+          
 
         </section>
 
@@ -221,7 +231,7 @@ export default function Home(){
         design={design}
         multiplier={multiplier}  
         multiplicand={multiplicand} 
-        /> 
+      /> 
     
       </main>
     </>

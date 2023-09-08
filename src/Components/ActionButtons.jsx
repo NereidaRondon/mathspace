@@ -8,7 +8,7 @@ export default function ActionButtons(props){
   return(
     <div className='flex flex-wrap justify-around w-48 md:w-72 py-1'>
       
-      <div className=''>
+      <div className='w-24 h-24'>
         {showCCBtn && <button onClick={props.clear} className='border border-teal-100 text-2xl text-black w-20 h-16 md:h-20 px-2 m-2 bg-sky-500 rounded-full'>clear</button>}
       </div>
 
