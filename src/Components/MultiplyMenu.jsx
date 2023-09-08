@@ -93,7 +93,7 @@ function MultiplyMenu(props){
 
       <h2 className='my-10 md:my-20'>Let&apos;s practice the {props.multiplier} times tables!</h2>
     
-      <button className='w-40 md:w-48 h-20 md:h-24 bg-blue-900 font-bold text-white text-2xl md:text-4xl rounded-2xl drop-shadow-3xl glow-on-hover' onClick={props.start}>START</button>
+      <button className='w-40 md:w-48 h-20 md:h-24 bg-blue-900 font-bold text-white text-2xl md:text-4xl rounded-2xl drop-shadow-3xl' onClick={props.start}>START</button>
 
     </section>
   );
