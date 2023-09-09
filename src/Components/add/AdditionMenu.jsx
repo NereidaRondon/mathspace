@@ -12,19 +12,19 @@ export default function AdditionMenu(){
       
       {/* <img id='astronaut' src={astronaut} className='absolute top-36 md:top-44 lg:top-40 w-5/12 md:w-2/5 lg:w-1/3 xl:w-1/4' alt='An astronaut floating in space among yellow stars with a yellow star in their palm'/> */}
 
-      <section className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-black text-xl md:text-3xl">
+      <section className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-black text-lg md:text-2xl">
 
-        <Link to='/add'><button className={buttonClass}>Add</button></Link>
+        <Link to='/add'><button className={buttonClass}>Add Numbers from 1-35</button></Link>
+
+        <Link to='/compare'><button className={buttonClass}>Compare Numbers<p>&lt;, &gt;, &#61;</p></button></Link>
+
+        <Link to='/skipadd'><button className={buttonClass}>Skip Counting</button></Link>
+
+        <Link to='/twodigits'><button className={buttonClass}>Column Addition<p>2 digits</p></button></Link>
+
+        <Link to='/threedigits'><button className={buttonClass}>Column Addition<p>3 digits</p></button></Link>
 
         <Link to='/addmultiplechoice'><button className={buttonClass}>Multiple Choice Questions</button></Link>
-
-        <Link to='/add'><button className={buttonClass}>Add</button></Link>
-
-        <Link to='/add'><button className={buttonClass}>Add</button></Link>
-
-        <Link to='/add'><button className={buttonClass}>Add</button></Link>
-
-        <Link to='/add'><button className={buttonClass}>Add</button></Link>
 
       </section>
       
