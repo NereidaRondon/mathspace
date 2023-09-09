@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import ActionButtons from '../multiply/ActionButtons';
-import Header from '../Header';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ActionButtons from '../multiply/ActionButtons';
+import Header from '../Header';
 import BaseTen from './BaseTen';
 
 
@@ -15,20 +14,23 @@ export default function AddPage(){
   const [score, setScore] = useState(0);
   const [addend1, setAddend1] = useState(0);
   const [addend2, setAddend2] = useState(0);
-  const [design, setDesign] = useState('⭐');
   const [inputValue, setInputValue] = useState('');
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [sumValue, setSumValue] = useState(null);
   const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
  
+    useEffect(()=>{
+    console.log("Let's add!");
+    handleStart();
+  },[]);
+
   const handleStart = () => {
     handleEquation();
     setInputValue('');
     setTurn(1);
     console.log('turn: ', turn);
     setScore(0);
-    handleEmoji();
   }
   
   const handleInputChange = ()=>{
@@ -102,7 +104,6 @@ export default function AddPage(){
       setShowCheckClearBtn(false);
       setShowExitBtn(true);
     } else{
-      handleEmoji();
       setTurn(turn+1);
       console.log("Next!");
       console.log('turn: ', turn);
@@ -118,25 +119,14 @@ export default function AddPage(){
   function handleEquation(){
    
     let num1 = Math.floor((Math.random()*30)+6);
-    let num2 = Math.floor((Math.random()*14)+1);
+    let num2 = Math.floor((Math.random()*20)+1);
     console.log(num1);
     console.log(num2);
     setAddend1(num1);
     setAddend2(num2);
     setSumValue(num1 + num2);
   }
-  useEffect(()=>{
-    console.log("Let's add!");
-    handleEquation();
-  },[]);
   
-  const handleEmoji = () => {
-    const designs = ['👽', '🚀', '⭐', '🤖', '🪐', '🌎', '🛸' ];
-    let emoji = Math.floor(Math.random()*7);
-    setDesign(designs[emoji]);
-    console.log(emoji);
-    console.log(design);
-  }
   const sumBox = ( )=> {
     return(
       <input 
