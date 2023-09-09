@@ -15,8 +15,8 @@ export default function BaseTen(props){
   } 
   
   return(
-      <section className="flex text-sm gap-6 my-5">
-        <div className="flex flex-row flex-wrap m-auto w-60 h-6 leading-6">{squares1}</div>
+      <section className="sm:flex text-sm gap-6 my-5">
+        <div className="my-5 mx-auto flex flex-row flex-wrap w-60 h-6 leading-6">{squares1}</div>
         <div className="flex flex-row flex-wrap m-auto w-60 h-6 leading-6">{squares2}</div>
       </section>
   );
