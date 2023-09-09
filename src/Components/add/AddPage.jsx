@@ -1,45 +1,33 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import ActionButtons from './ActionButtons';
-import Header from './Header';
-import MultiplyMenu from './MultiplyMenu';
+import ActionButtons from '../multiply/ActionButtons';
+import Header from '../Header';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Counters from './Counters';
+import BaseTen from './BaseTen';
 
-export default function Home(){
+
+export default function AddPage(){
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
+  const [addend1, setAddend1] = useState(0);
+  const [addend2, setAddend2] = useState(0);
   const [design, setDesign] = useState('⭐');
-  //const [disable, setDisable] = useState(false);
-  const [multiplier, setMultiplier] = useState(1);
-  const [showModal, setShowModal] = useState(true);
   const [inputValue, setInputValue] = useState('');
-  const [usedNumbers, setUsedNumbers] = useState([0]);
-  const [multiplicand, setMultiplicand] = useState(0);
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
-  const [productValue, setProductValue] = useState(null);
-  const [multiplierText, setMultiplierText] = useState(1);
+  const [sumValue, setSumValue] = useState(null);
   const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
  
-  const handleRadioChange = (num)=>{
-    console.log('radio: ', num);
-    setMultiplierText(num);
-  }
-
   const handleStart = () => {
-    console.log(multiplierText);
-    setMultiplier(multiplierText);
     handleEquation();
     setInputValue('');
     setTurn(1);
     console.log('turn: ', turn);
     setScore(0);
-    setUsedNumbers([0]);
-    setShowModal(false);
     handleEmoji();
   }
   
@@ -49,13 +37,13 @@ export default function Home(){
   }
   
   const handleCheck = () => {
-    console.log(usedNumbers);
-    console.log(multiplier);
+    console.log(addend1);
+    console.log(addend2);
     console.log(inputValue);
-    console.log(productValue);
-    console.log(Number(inputValue) === productValue);
+    console.log(sumValue);
+    console.log(Number(inputValue) === sumValue);
     console.log('turn: ', turn);
-    if(Number(inputValue) === productValue){      
+    if(Number(inputValue) === sumValue){      
       toast.success("That is correct!", {
         position: "bottom-right",
         autoClose: 1500,
@@ -69,8 +57,6 @@ export default function Home(){
       setShowNextBtn(true);
       setShowCheckClearBtn(false);
       setScore(score + 1);
-      setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
-      //setDisable(!disable);
 
     }else{
       handleClear();
@@ -104,14 +90,13 @@ export default function Home(){
     }  
   };
   
-   
   const handleClear = () => {
     setInputValue('');
     console.log("Input cleared!");
   }
   
   const handleNext = () => {
-    if (turn === 12){
+    if (turn === 20){
       console.log("Task Complete!");
       setShowNextBtn(false);
       setShowCheckClearBtn(false);
@@ -126,25 +111,25 @@ export default function Home(){
       setShowCheckClearBtn(true);
       handleEquation();
       handleClear();
-      console.log(usedNumbers);
-      //setDisable(!disable);
     }
     
   }
 
   function handleEquation(){
-    let num;
-    do{
-      num = Math.floor(Math.random()*13);
-
-    } while (usedNumbers.includes(num) && turn < 12);
-
-    console.log('random number: ', num);
-  
-    setMultiplicand(num);
-    setProductValue(multiplierText * num);
-    
+   
+    let num1 = Math.floor((Math.random()*30)+6);
+    let num2 = Math.floor((Math.random()*14)+1);
+    console.log(num1);
+    console.log(num2);
+    setAddend1(num1);
+    setAddend2(num2);
+    setSumValue(num1 + num2);
   }
+  useEffect(()=>{
+    console.log("Let's add!");
+    handleEquation();
+  },[]);
+  
   const handleEmoji = () => {
     const designs = ['👽', '🚀', '⭐', '🤖', '🪐', '🌎', '🛸' ];
     let emoji = Math.floor(Math.random()*7);
@@ -152,7 +137,7 @@ export default function Home(){
     console.log(emoji);
     console.log(design);
   }
-  const productBox = ( )=> {
+  const sumBox = ( )=> {
     return(
       <input 
         id='inputElement' 
@@ -171,28 +156,10 @@ export default function Home(){
       />
     );
   }
-  // const correctAnswer = ()=> {
-  //   return(
-  //     <div className='flex-auto  text-2xl sm:text-6xl w-16 sm:w-32 mx-2 sm:mx-4 text-center rounded-md bg-transparent text-white'>
-  //       {productValue}
-  //     </div>
-  //   );
-  // }
       
   return(
     
     <>
-      <section className='flex justify-center content-center place-items-center'>
-
-        {showModal && 
-          <MultiplyMenu 
-          start={handleStart}
-          multiplier={multiplierText}
-          handleRadioChange={handleRadioChange}
-          />
-        }
-      </section>
-
       <Header score={score} />
 
       <main className='m-auto flex flex-col flex-wrap justify-center items-center w-11/12 text-white'> 
@@ -200,11 +167,11 @@ export default function Home(){
          
         <section className='flex my-6 w-auto justify-around items-center content-center equation-div h-auto m-auto' tabIndex={0}>
 
-          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area' >{multiplier}</p>
-          <p className='flex-auto text-lg sm:text-4xl text-center px-1 sm:px-2 math-signs' >✖️</p>
-          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area'>{multiplicand}</p>
+          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area' >{addend1}</p>
+          <p className='flex-auto text-lg sm:text-4xl text-center px-1 sm:px-2 math-signs' >➕</p>
+          <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area'>{addend2}</p>
           <p className='flex-auto text-lg sm:text-4xl text-center math-signs'>🟰</p>
-          {productBox()}
+          {sumBox()}
           
 
         </section>
@@ -227,11 +194,10 @@ export default function Home(){
           pauseOnFocusLoss={false} 
         />
 
-      <Counters 
-        design={design}
-        multiplier={multiplier}  
-        multiplicand={multiplicand} 
-      /> 
+        <BaseTen 
+          addend1 = {addend1}
+          addend2 = {addend2}
+        />
     
       </main>
     </>

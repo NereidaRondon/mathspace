@@ -5,10 +5,12 @@ export default function Stars(props){
   const StarRender = () => {
     let stars = '';
     for(let i = 0; i < total; i++){
-      stars += '⭐';
+      stars += '⭐ ';
     }
     //console.log(stars);
-    return `${total}  ${stars}`;
+    return (
+      <div>{total}   {stars}</div>
+    );
   }
 
   return(
