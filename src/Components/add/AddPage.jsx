@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ActionButtons from '../multiply/ActionButtons';
 import Header from '../Header';
 import BaseTen from './BaseTen';
-
+import HomeButton from "../HomeButton";
+      
 
 export default function AddPage(){
   const inputRef = useRef(null);
@@ -151,10 +152,11 @@ export default function AddPage(){
     
     <>
       <Header score={score} />
+      
+      <HomeButton />
 
       <main className='m-auto flex flex-col flex-wrap justify-center items-center w-11/12 text-white'> 
         
-         
         <section className='flex my-6 w-auto justify-around items-center content-center equation-div h-auto m-auto' tabIndex={0}>
 
           <p className='flex-auto text-xl sm:text-6xl text-center w-12 sm:w-32 px-1 sm:px-2 equation-size multiple-area' >{addend1}</p>

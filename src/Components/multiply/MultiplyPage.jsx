@@ -6,6 +6,7 @@ import MultiplyMenu from './MultiplyMenu';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Counters from './Counters';
+import HomeButton from "../HomeButton";
 
 export default function MultiplyPage(){
   const inputRef = useRef(null);
@@ -181,6 +182,8 @@ export default function MultiplyPage(){
   return(
     
     <>
+      <HomeButton />
+
       <section className='flex justify-center content-center place-items-center'>
 
         {showModal && 

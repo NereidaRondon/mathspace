@@ -14,6 +14,12 @@ body{
   width: 100%;
 }
 
+.fa-house{
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(271deg) brightness(110%) contrast(101%) drop-shadow(3px 3px 2px rgba(0, 71, 212));
+}
+.fa-house:hover{
+  filter: invert(87%) sepia(28%) saturate(1052%) hue-rotate(98deg) brightness(96%) contrast(115%) drop-shadow(3px 3px 2px rgba(0, 71, 212));
+}
 /* ------------------------- Landing Page ------------------------- */
 
 .landingpage{
