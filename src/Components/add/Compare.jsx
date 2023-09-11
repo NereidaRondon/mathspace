@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import confetti from "https://cdn.skypack.dev/canvas-confetti";
 import HomeButton from "../HomeButton";
 import check from "../../assets/check mark icon.webp";
 import incorrect from "../../assets/x icon.webp";
 
 export default function Compare(){
-
+  const navigate = useNavigate();
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
   const [score, setScore] = useState(0);
@@ -21,8 +22,29 @@ export default function Compare(){
   }, []);
 
   const generateNumbers = () => {
-    let firstNum = ( Math.floor(Math.random() * 350) ) + 151;
-    let secondNum = ( Math.floor(Math.random() * 400) ) + 151;
+    let firstNum;
+    let secondNum;
+    console.log('totalQuestions: ' + totalQuestions);
+    if(totalQuestions <= 3){
+      firstNum = ( Math.floor(Math.random() * 40) ) + 60;
+      secondNum = ( Math.floor(Math.random() * 40) ) + 60;
+    } else if( totalQuestions <= 4){
+      let baseNum = ( Math.floor(Math.random() * 99) ) + 205;
+      firstNum = ( Math.floor(Math.random() * 2) ) + baseNum;
+      secondNum = ( Math.floor(Math.random() * 2) ) + baseNum;
+    } else if( totalQuestions <= 7){
+      firstNum = ( Math.floor(Math.random() * 190) ) + 110;
+      secondNum = ( Math.floor(Math.random() * 190) ) + 110;
+    } else if( totalQuestions <= 10){
+      firstNum = ( Math.floor(Math.random() * 300) ) + 400;
+      secondNum = ( Math.floor(Math.random() * 300) ) + 400;
+    } else if( totalQuestions <= 14){
+      firstNum = ( Math.floor(Math.random() * 50) ) + 350;
+      secondNum = ( Math.floor(Math.random() * 50) ) + 350;
+    } else {
+      firstNum = ( Math.floor(Math.random() * 250) ) + 750;
+      secondNum = ( Math.floor(Math.random() * 250) ) + 700;
+    }
 
     setNum1(firstNum);
     setNum2(secondNum);
@@ -41,7 +63,10 @@ export default function Compare(){
     }
   };
   const handleCheckAnswer=(choice)=>{
+    console.log('in handle check, before: ' + totalQuestions)
     setTotalQuestions(totalQuestions + 1);
+    console.log('in handle check, after: ' + totalQuestions)
+
     if(answer === choice){
       setScore(score + 1);
       setShowCheck(true);
@@ -50,11 +75,18 @@ export default function Compare(){
       setShowIncorrect(true);
     }
     setTimeout(()=> {
-      generateNumbers();
-      setShowCheck(false);
-      setShowIncorrect(false); 
-      confetti.reset(); 
-    }, 2500);
+      if(totalQuestions === 19){
+        console.log('done');
+        confetti.reset(); 
+        navigate('/complete');
+
+      } else{
+        generateNumbers();
+        setShowCheck(false);
+        setShowIncorrect(false); 
+        confetti.reset(); 
+      }
+    }, 2000);
   };
 
   const StarRender = () => {
@@ -87,7 +119,7 @@ export default function Compare(){
         </div>
       </section>
 
-      <section className="flex justify-around md:justify-center">
+      <section className="flex justify-around md:justify-center mx-2">
         <button className="w-16 md:w-24 h-16 md:h-24 md:mx-6 border-2 rounded-full border-emerald-950 drop-shadow-3xl bg-emerald-900 text-5xl md:text-7xl outline-emerald-400 hover:bg-emerald-600" onClick={()=>{handleCheckAnswer(1)}}><span className="drop-shadow-3xl font-bold">&#60;</span></button>
         
         <button className={buttonClasses} onClick={()=>{handleCheckAnswer(2)}}><span className="drop-shadow-3xl font-bold">&#62;</span></button>
