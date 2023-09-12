@@ -3,17 +3,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* *{
-  border: 1px solid red;
-} */
-
 body{
   background: linear-gradient(180deg, #001d43 0%, #000000 100%);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
 }
-
 .fa-house{
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(271deg) brightness(110%) contrast(101%) drop-shadow(3px 3px 2px rgba(0, 71, 212));
 }
@@ -27,13 +22,11 @@ body{
   filter: invert(8%) sepia(100%) saturate(7175%) hue-rotate(23deg) brightness(91%) contrast(124%);
 }
 /* ------------------------- Landing Page ------------------------- */
-
 .landingpage{
   background:url('./assets/green-galaxy.webp');
   background-repeat: no-repeat;
   background-size: cover; 
 }
-
 .title{
   animation: 1s linear 0s  rise;
 }
@@ -72,31 +65,6 @@ body{
       transform: translateX(0%);
     }
   }
-/* ----------- END OF LANDING PAGE ------------ */
-
-/* ----------- MULTIPLY MENU START MODAL ------------ */
-
-.title-div{
-  font-family: 'Gugi', sans-serif;
-}
-.start-modal{
-  background: radial-gradient(circle at 50% 50%, #81e9e2, #78e1dd, #6fdad8, #67d3d2, 
-  #5ecbcd, #55c4c8, #4cbcc3, #42b5bd, #39aeb8, #2ea6b3, #229fad, #1398a8);
-}
-input[type=radio]{
-  width: 1.25rem;
-  height: 1.25rem;
-}
-/* ----------- END OF MULTIPLY MENU START MODAL ------------ */
-
-#inputElement{
-  font-family: 'Titan One', sans-serif;
-  font-family: 'Rammetto One', sans-serif;
-  font-family: 'Gugi', sans-serif;
-  font-family: 'Quicksand', sans-serif;
-}
-/* ----------- END OF MULTIPLY PAGE ------------ */
-
 /* ------Button Hover Glow Effect------------ */
 .glow-on-hover:before {
     content: '';
@@ -134,7 +102,6 @@ input[type=radio]{
     left: 0;
     top: 0;
     border-radius: 10px;
-    
 }
 @keyframes glowing {
     0% { background-position: 0 0; }

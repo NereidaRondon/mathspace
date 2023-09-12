@@ -1,8 +1,8 @@
 function MultiplyMenu(props){
-
+//bg-gradient-to-b from-teal-300 to-teal-600
   return(
 
-    <section className='z-10 w-10/12 lg:w-3/4 h-4/5 lg:h-3/4 absolute top-20 left-0 right-0 m-auto p-1 text-xl md:text-3xl text-center start-modal rounded-2xl border border-teal-800'>
+    <section className='z-10 w-10/12 lg:w-3/4 h-4/5 lg:h-3/4 absolute top-20 left-0 right-0 m-auto p-1 text-xl md:text-3xl text-center start-modal rounded-2xl border border-teal-800 bg-mygradient'>
       <h2 className='my-8'>
         What multiplier do you want to practice?
       </h2>
@@ -11,7 +11,7 @@ function MultiplyMenu(props){
 
         <div>
           <input 
-            className=''
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -24,7 +24,8 @@ function MultiplyMenu(props){
           <label className='ml-1 mr-5 radio-label' htmlFor='two'>2</label>
         </div>
         <div>
-          <input 
+          <input
+            className='w-5 h-5' 
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -37,6 +38,7 @@ function MultiplyMenu(props){
         </div>
         <div>
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -49,6 +51,7 @@ function MultiplyMenu(props){
         </div>
         <div>  
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -62,6 +65,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -76,6 +80,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -90,6 +95,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -104,6 +110,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -118,6 +125,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -132,6 +140,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'
@@ -146,6 +155,7 @@ function MultiplyMenu(props){
 
         <div> 
           <input 
+            className='w-5 h-5'
             type='radio' 
             role='radio'
             aria-checked='false'

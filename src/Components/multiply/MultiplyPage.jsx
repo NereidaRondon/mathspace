@@ -155,7 +155,6 @@ export default function MultiplyPage(){
   const productBox = ( )=> {
     return(
       <input 
-        id='inputElement' 
         className='flex-auto border-2 border-blue-400 text-2xl sm:text-6xl w-16 sm:w-32 mx-2 sm:mx-4 text-center rounded-md bg-transparent text-white' 
         type='number' 
         value={inputValue}
