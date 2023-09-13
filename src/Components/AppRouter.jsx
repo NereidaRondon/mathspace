@@ -7,6 +7,7 @@ import SkipAdd from './add/SkipAdd';
 import TwoDigits from './add/TwoDigits';
 import ThreeDigits from './add/ThreeDigits';
 import AddMultipleChoice from './add/AddMultipleChoice';
+import SubtractPage from './subtract/SubtractPage';
 import MultiplyPage from './multiply/MultiplyPage';
 import Complete from './Complete';
 
@@ -22,6 +23,8 @@ export default function AppRouter(){
       <Route path="/twodigits" element={ <TwoDigits /> } />
       <Route path="/threedigits" element={ <ThreeDigits /> } />
       <Route path="/addmultiplechoice" element={ <AddMultipleChoice/> } />
+
+      <Route path="/subtractpage" element={ <SubtractPage/> } />
 
       <Route path="/multiply" element={ <MultiplyPage/> } /> 
 

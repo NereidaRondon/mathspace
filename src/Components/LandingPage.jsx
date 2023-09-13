@@ -15,6 +15,8 @@ export default function MathSpace(){
       <section className="lg:mt-10">
         <Link to='/additionmenu'><button className={buttonClass}>Add</button></Link>
 
+        <Link to='/subtractpage'><button className={buttonClass}>Subtract</button></Link>
+
         <Link to='/multiply'><button className={buttonClass}>Multiply</button></Link>
       </section>
       
