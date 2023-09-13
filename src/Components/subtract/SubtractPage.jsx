@@ -49,7 +49,7 @@ export default function AddPage(){
     if(Number(inputValue) === sumValue){      
       toast.success("That is correct!", {
         position: "bottom-right",
-        autoClose: 1500,
+        autoClose: 1000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: false,
@@ -120,7 +120,7 @@ export default function AddPage(){
   function handleEquation(){
    
     let num1 = Math.floor((Math.random()*35)+15);
-    let num2 = Math.floor((Math.random()*10)+1);
+    let num2 = Math.floor((Math.random()*14)+1);
     console.log(num1);
     console.log(num2);
     setAddend1(num1);
