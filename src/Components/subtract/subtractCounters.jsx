@@ -1,4 +1,4 @@
-export default function BaseTen(props){
+export default function SubtractCounters(props){
 
   const num1 = props.addend1;
   const num2 = props.addend2;
