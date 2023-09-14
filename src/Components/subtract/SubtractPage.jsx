@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ActionButtons from '../multiply/ActionButtons';
 import Header from '../Header';
-import BaseTen from '../add/BaseTen';
+import Blocks from './Blocks';
 import HomeButton from "../HomeButton";
       
 
@@ -186,7 +186,7 @@ export default function AddPage(){
           pauseOnFocusLoss={false} 
         />
 
-        <BaseTen 
+        <Blocks 
           addend1 = {addend1}
           addend2 = {addend2}
         />
