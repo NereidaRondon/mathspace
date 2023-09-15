@@ -8,7 +8,7 @@ import BaseTen from './BaseTen';
 import HomeButton from "../HomeButton";
       
 
-export default function AddPage(){
+export default function Add_1_35(){
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
