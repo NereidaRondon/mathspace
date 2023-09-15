@@ -13,6 +13,10 @@ export default function AdditionMenu(){
     
       <section className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-black text-lg md:text-2xl">
 
+        <Link to='/add_1_4'><button className={buttonClass}>Add Numbers<p>from 1-4</p></button></Link>
+
+        <Link to='/add_1_9'><button className={buttonClass}>Add Numbers<p>from 1-9</p></button></Link>
+
         <Link to='/add'><button className={buttonClass}>Add Numbers<p>from 1-35</p></button></Link>
 
         <Link to='/compare'><button className={buttonClass}>Compare Numbers<p>&lt;, &gt;, &#61;</p></button></Link>

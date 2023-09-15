@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import LandingPage from './LandingPage';
 import AdditionMenu from './add/AdditionMenu';
+import Add_1_4 from './add/Add1-4';
+import Add_1_9 from './add/Add1-9';
 import AddPage from './add/AddPage';
 import Compare from './add/Compare';
 import SkipAdd from './add/SkipAdd';
@@ -16,15 +18,17 @@ export default function AppRouter(){
     <Routes>
       <Route path="/" element={ <LandingPage /> } />
 
-      <Route path="/additionmenu" element={ <AdditionMenu/> } />
-      <Route path="/add" element={ <AddPage/> } /> 
+      <Route path="/additionmenu" element={ <AdditionMenu /> } />
+      <Route path="/add_1_4" element={ <Add_1_4 /> } />
+      <Route path="/add_1_9" element={ <Add_1_9 /> } /> 
+      <Route path="/add" element={ <AddPage /> } />  
       <Route path="/compare" element={ <Compare /> } />
       <Route path="/skipadd" element={ <SkipAdd /> } />
       <Route path="/twodigits" element={ <TwoDigits /> } />
       <Route path="/threedigits" element={ <ThreeDigits /> } />
-      <Route path="/addmultiplechoice" element={ <AddMultipleChoice/> } />
+      <Route path="/addmultiplechoice" element={ <AddMultipleChoice /> } />
 
-      <Route path="/subtractpage" element={ <SubtractPage/> } />
+      <Route path="/subtractpage" element={ <SubtractPage /> } />
 
       <Route path="/multiply" element={ <MultiplyPage/> } /> 
 
