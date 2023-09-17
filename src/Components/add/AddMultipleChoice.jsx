@@ -144,9 +144,9 @@ export default function AddMultipleChoice(){
 
       <h2 className='font-gugi text-5xl text-center mt-5'>Multiple Choice</h2> 
 
-      <section>
+      {/* <section>
         {questionData}
-      </section>
+      </section> */}
 
     </main>
   );

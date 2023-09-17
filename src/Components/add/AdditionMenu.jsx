@@ -13,15 +13,13 @@ export default function AdditionMenu(){
     
       <section className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-black text-lg md:text-2xl">
 
-        <Link to='/add_1_4'><button className={buttonClass}>Add Numbers<p>from 1-4</p></button></Link>
+        <Link to='/add_1_5'><button className={buttonClass}>Add Numbers<p>from 1-5</p></button></Link>
 
         <Link to='/add_1_9'><button className={buttonClass}>Add Numbers<p>from 1-9</p></button></Link>
 
         <Link to='/add_1_35'><button className={buttonClass}>Add Numbers<p>from 1-35</p></button></Link>
 
         <Link to='/skipadd'><button className={buttonClass}>Skip Adding 🚧</button></Link>
-
-        <Link to='/twodigits'><button className={buttonClass}>Column Addition<p>2 digits 🚧</p></button></Link>
 
         <Link to='/threedigits'><button className={buttonClass}>Column Addition<p>3 digits 🚧</p></button></Link>
 

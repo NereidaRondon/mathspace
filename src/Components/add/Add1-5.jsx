@@ -4,11 +4,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ActionButtons from '../multiply/ActionButtons';
 import Header from '../Header';
-import BaseTen from './BaseTen';
+import BaseTenSmall from './BaseTenSmall';
 import HomeButton from "../HomeButton";
       
 
-export default function Add_1_4(){
+export default function Add_1_5(){
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
@@ -119,8 +119,8 @@ export default function Add_1_4(){
 
   function handleEquation(){
    
-    let num1 = Math.floor((Math.random()*3)+1);
-    let num2 = Math.floor((Math.random()*3)+1);
+    let num1 = (Math.floor((Math.random()*5))+1);
+    let num2 = Math.floor((Math.random()*5)+1);
     console.log(num1);
     console.log(num2);
     setAddend1(num1);
@@ -186,7 +186,7 @@ export default function Add_1_4(){
           pauseOnFocusLoss={false} 
         />
 
-        <BaseTen 
+        <BaseTenSmall 
           addend1 = {addend1}
           addend2 = {addend2}
         />
