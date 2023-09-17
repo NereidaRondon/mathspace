@@ -13,11 +13,14 @@ export default function MathSpace(){
       <img id='astronaut' src={astronaut} className='absolute top-36 md:top-44 lg:top-40 w-5/12 md:w-2/5 lg:w-1/3 xl:w-1/4' alt='An astronaut floating in space among yellow stars with a yellow star in their palm'/>
 
       <section className="lg:mt-10">
+        <Link to='/numbersmenu'><button className={buttonClass}>Numbers</button></Link>
+
         <Link to='/additionmenu'><button className={buttonClass}>Add</button></Link>
 
         <Link to='/subtractpage'><button className={buttonClass}>Subtract</button></Link>
 
         <Link to='/multiply'><button className={buttonClass}>Multiply</button></Link>
+
       </section>
       
 
