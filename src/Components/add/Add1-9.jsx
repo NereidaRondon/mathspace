@@ -119,8 +119,8 @@ export default function Add_1_9(){
 
   function handleEquation(){
    
-    let num1 = Math.floor((Math.random()*8)+1);
-    let num2 = Math.floor((Math.random()*8)+1);
+    let num1 = Math.floor((Math.random()*6)+3);
+    let num2 = Math.floor((Math.random()*5)+1);
     console.log(num1);
     console.log(num2);
     setAddend1(num1);
@@ -143,7 +143,7 @@ export default function Add_1_9(){
         name='answer'
         maxLength="3"
         required
-        //disabled={disable}
+    
       />
     );
   }
@@ -165,7 +165,6 @@ export default function Add_1_9(){
           <p className='flex-auto text-lg sm:text-4xl text-center math-signs'>🟰</p>
           {sumBox()}
           
-
         </section>
 
         <ActionButtons 
@@ -185,12 +184,12 @@ export default function Add_1_9(){
           rtl={false}
           pauseOnFocusLoss={false} 
         />
-
+        
         <BaseTen 
           addend1 = {addend1}
           addend2 = {addend2}
         />
-    
+
       </main>
     </>
   );
