@@ -7,7 +7,6 @@ import Header from '../Header';
 import BaseTen from './BaseTen';
 import HomeButton from "../HomeButton";
       
-
 export default function Add_1_35(){
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -19,7 +18,8 @@ export default function Add_1_35(){
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [sumValue, setSumValue] = useState(null);
-  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
+  const [showCheckBtn, setShowCheckBtn] = useState(true);
+  const [showClearBtn, setShowClearBtn] = useState(true);
  
     useEffect(()=>{
     console.log("Let's add!");
@@ -58,7 +58,8 @@ export default function Add_1_35(){
         theme: "colored",
       })
       setShowNextBtn(true);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setScore(score + 1);
 
     }else{
@@ -102,7 +103,8 @@ export default function Add_1_35(){
     if (turn === 20){
       console.log("Task Complete!");
       setShowNextBtn(false);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setShowExitBtn(true);
     } else{
       setTurn(turn+1);
@@ -110,7 +112,8 @@ export default function Add_1_35(){
       console.log('turn: ', turn);
       setInputValue('');
       setShowNextBtn(false);
-      setShowCheckClearBtn(true);
+      setShowCheckBtn(true);
+      setShowClearBtn(true);
       handleEquation();
       handleClear();
     }
@@ -143,7 +146,6 @@ export default function Add_1_35(){
         name='answer'
         maxLength="3"
         required
-        //disabled={disable}
       />
     );
   }
@@ -165,7 +167,6 @@ export default function Add_1_35(){
           <p className='flex-auto text-lg sm:text-4xl text-center math-signs'>🟰</p>
           {sumBox()}
           
-
         </section>
 
         <ActionButtons 
@@ -173,7 +174,8 @@ export default function Add_1_35(){
           clear={handleClear}
           next={handleNext} 
           exit={handleExit}
-          showCheckClearBtn={showCheckClearBtn} 
+          showCheckBtn={showCheckBtn}
+          showClearBtn={showClearBtn} 
           showNextBtn={showNextBtn}
           showExitBtn={showExitBtn}
           />

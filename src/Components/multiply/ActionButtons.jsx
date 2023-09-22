@@ -3,7 +3,8 @@ import check from '../../assets/check-solid.svg';
 import arrow from '../../assets/arrow-right-solid.svg';
 
 export default function ActionButtons(props){
-  let showCCBtn = props.showCheckClearBtn;
+  let showCheckBtn = props.showCheckBtn;
+  let showClearBtn = props.showClearBtn;
   let showNext = props.showNextBtn;
   let exit = props.showExitBtn;
 
@@ -11,11 +12,11 @@ export default function ActionButtons(props){
     <div className='flex flex-wrap justify-around w-48 md:w-72 py-1'>
       
       <div className='w-24 h-24'>
-        {showCCBtn && <button onClick={props.clear} className='border border-teal-100 text-xl md:text-3xl text-black w-16 h-16 md:w-20 md:h-20 px-1 py-1 m-2 bg-sky-500 rounded-full font-bold'>clear</button>}
+        {showClearBtn && <button onClick={props.clear} className='border border-teal-100 text-xl md:text-3xl text-black w-16 h-16 md:w-20 md:h-20 px-1 py-1 m-2 bg-sky-500 rounded-full font-bold'>clear</button>}
       </div>
 
       <div className='flex flex-wrap w-25'>
-        {showCCBtn && <button onClick={props.check} className='border border-green-300 text-2xl w-16 h-16 md:w-20 md:h-20 px-1 py-1 m-2 bg-green-500 rounded-full text-center'>
+        {showCheckBtn && <button onClick={props.check} className='border border-green-300 text-2xl w-16 h-16 md:w-20 md:h-20 px-1 py-1 m-2 bg-green-500 rounded-full text-center'>
           <img src={check} className='w-12 h-12 text-center m-auto'/></button>}
 
         {showNext && <button onClick={props.next} className='border border-blue-300 text-3xl w-16 h-16 md:w-20 md:h-20 px-1 py-1 m-2 bg-sky-500 rounded-full text-center'>

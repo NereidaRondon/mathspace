@@ -23,7 +23,8 @@ export default function MultiplyPage(){
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [productValue, setProductValue] = useState(null);
   const [multiplierText, setMultiplierText] = useState(1);
-  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
+  const [showCheckBtn, setShowCheckBtn] = useState(true);
+  const [showClearBtn, setShowClearBtn] = useState(true);
  
   const handleRadioChange = (num)=>{
     console.log('radio: ', num);
@@ -67,7 +68,8 @@ export default function MultiplyPage(){
         theme: "colored",
       })
       setShowNextBtn(true);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setScore(score + 1);
       setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
       //setDisable(!disable);
@@ -114,7 +116,8 @@ export default function MultiplyPage(){
     if (turn === 12){
       console.log("Task Complete!");
       setShowNextBtn(false);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setShowExitBtn(true);
     } else{
       handleEmoji();
@@ -123,7 +126,8 @@ export default function MultiplyPage(){
       console.log('turn: ', turn);
       setInputValue('');
       setShowNextBtn(false);
-      setShowCheckClearBtn(true);
+      setShowCheckBtn(true);
+      setShowClearBtn(false);
       handleEquation();
       handleClear();
       console.log(usedNumbers);
@@ -213,7 +217,8 @@ export default function MultiplyPage(){
           clear={handleClear}
           next={handleNext} 
           exit={handleExit}
-          showCheckClearBtn={showCheckClearBtn} 
+          showCheckBtn={showCheckBtn} 
+          showClearBtn={showClearBtn} 
           showNextBtn={showNextBtn}
           showExitBtn={showExitBtn}
           />

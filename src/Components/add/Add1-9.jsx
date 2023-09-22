@@ -19,7 +19,8 @@ export default function Add_1_9(){
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [sumValue, setSumValue] = useState(null);
-  const [showCheckClearBtn, setShowCheckClearBtn] = useState(true);
+  const [showCheckBtn, setShowCheckBtn] = useState(true);
+  const [showClearBtn, setShowClearBtn] = useState(true);
  
     useEffect(()=>{
     console.log("Let's add!");
@@ -58,7 +59,8 @@ export default function Add_1_9(){
         theme: "colored",
       })
       setShowNextBtn(true);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setScore(score + 1);
 
     }else{
@@ -102,7 +104,8 @@ export default function Add_1_9(){
     if (turn === 10){
       console.log("Task Complete!");
       setShowNextBtn(false);
-      setShowCheckClearBtn(false);
+      setShowCheckBtn(false);
+      setShowClearBtn(false);
       setShowExitBtn(true);
     } else{
       setTurn(turn+1);
@@ -110,7 +113,8 @@ export default function Add_1_9(){
       console.log('turn: ', turn);
       setInputValue('');
       setShowNextBtn(false);
-      setShowCheckClearBtn(true);
+      setShowCheckBtn(true);
+      setShowClearBtn(true);
       handleEquation();
       handleClear();
     }
@@ -172,7 +176,8 @@ export default function Add_1_9(){
           clear={handleClear}
           next={handleNext} 
           exit={handleExit}
-          showCheckClearBtn={showCheckClearBtn} 
+          showCheckBtn={showCheckBtn} 
+          showClearBtn={showClearBtn}
           showNextBtn={showNextBtn}
           showExitBtn={showExitBtn}
           />
