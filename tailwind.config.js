@@ -16,7 +16,9 @@ export default {
         'mygradient': 'radial-gradient(circle at 50% 50%, #81e9e2, #78e1dd, #6fdad8, #67d3d2, #5ecbcd, #55c4c8, #4cbcc3, #42b5bd, #39aeb8, #2ea6b3, #229fad, #1398a8)'
       },
       lineHeight: {
-        '20': '4rem'
+        '20': '4rem',
+        '25': '5rem',
+        '30': '6rem'
       },
     },
     plugins: [],
