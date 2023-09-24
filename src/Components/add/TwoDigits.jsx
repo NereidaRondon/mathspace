@@ -14,6 +14,12 @@ export default function TwoDigits(){
   const [tens, setTens] = useState(1);
   const [hundreds, setHundreds] = useState(1);
   const [carryTheTens, setCarryTheTens] = useState(1);
+  const [needCarryTensInput, setNeedCarryTensInput] = useState(false);
+  const [needHundredsInput, setNeedHundredsInput] = useState(false);
+  const [onesInputValue, setOnesInputValue] = useState('');
+  const [tensInputValue, setTenInputValue] = useState('');
+  const [hundredsInputValue, setHundredsInputValue] = useState('');
+  const [carryInputValue, setCarryInputValue] = useState('');
 
   const [TopRowNum1, setTopRowNum1] = useState('');
   const [TopRowNum2, setTopRowNum2] = useState('');
@@ -33,8 +39,8 @@ export default function TwoDigits(){
   },[]);
 
   function NumsGenerator(){
-    let num1 = Math.floor(Math.random()*19) + 11;
-    let num2 = Math.floor(Math.random()*19) + 11;
+    let num1 = Math.floor(Math.random()*50) + 11;
+    let num2 = Math.floor(Math.random()*50) + 11;
     let TopRow1 = num1.toString().charAt(0);
     let TopRow2 = num1.toString().charAt(1);
     let BottomRow1 = num2.toString().charAt(0);
@@ -47,13 +53,17 @@ export default function TwoDigits(){
     console.log(TopRow2);
     console.log(BottomRow1);
     console.log(BottomRow2);
+
     let onesColumn = Number(TopRow2) + Number(BottomRow2);
-    console.log(onesColumn);
-    let tensColumn = Number(TopRow1) + Number(BottomRow1);
-    console.log(tensColumn); 
-    if (onesColumn >= 10){
+    if(onesColumn > 9){
+      setNeedCarryTensInput(true);
       onesColumn -= 10;
     }
+    let tensColumn = Number(TopRow1) + Number(BottomRow1);
+    if(tensColumn > 9){
+      setNeedHundredsInput(true);
+    }
+
     setOnesColumnSum(onesColumn);
     setTensColumnSum(tensColumn);
     
@@ -75,7 +85,15 @@ export default function TwoDigits(){
     setCarryTheTens(inputCarryTheTensRef.current.value);
     console.log(`This is the carry: `+ inputCarryTheTensRef.current.value);
   }
+  
+  const handleExit=()=>{
+    navigate('/complete');
+  }
 
+    const handleClear = () => {
+    //setInputValue('');
+    console.log("Inputs cleared!");
+  }
 
   const handleCheck = () => {
     (onesColumnSum == ones)? console.log(true) : console.log(false);
@@ -119,14 +137,6 @@ export default function TwoDigits(){
     //NumsGenerator();
   }
 
-  const handleExit=()=>{
-    navigate('/complete');
-  }
-
-    const handleClear = () => {
-    //setInputValue('');
-    console.log("Inputs cleared!");
-  }
   
   const handleNext = () => {
     //if (turn === 5){
@@ -151,59 +161,67 @@ export default function TwoDigits(){
       <section className="flex flex-wrap sm:flex-nowrap flex-col sm:flex-row mx-auto mt-16 w-screen">
 
 
-        <div className="mx-auto w-1/3 h-10 sm:h-14"></div>
+        <div id="left-empty-div" className="mx-auto w-1/3 h-10 sm:h-14"></div>
           
         <div className="m-auto text-6xl sm:text-8xl text-end leading-25 grid grid-cols-3">
 
-          <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
-          <input 
-            className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-            type='text' 
-            maxLength={1}
-            ref={inputCarryTheTensRef}
-            onChange={handleCarryTheTensChange}
-            required
-            />
-          <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum1}</div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum2}</div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24 text-center">+</div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum1}</div>
-          <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum2}</div>
-          <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
-          <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
-          <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
-          <input 
-            className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-            type='text' 
-            maxLength={1}
-            ref={inputHundredsRef}
-            onChange={handleHundredsChange}
+            <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
+            {needCarryTensInput && (<input 
+              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+              type='text' 
+              maxLength={1}
+              ref={inputCarryTheTensRef}
+              onChange={handleCarryTheTensChange}
+              required
+              value={carryInputValue}
+              />)}
+            {!needCarryTensInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)}  
+            <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
+
+            <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
+            <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum1}</div>
+            <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum2}</div>
+
+            <div className="w-14 h-20 sm:w-20 sm:h-24 text-center">+</div>
+            <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum1}</div>
+            <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum2}</div>
+
+            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
             
-            /> 
-          <input 
-            className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-            type='text' 
-            maxLength={1}
-            ref={inputTensRef}
-            onChange={handleTensChange}
-            required
-            />   
-          <input 
-            className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-            type='text' 
-            maxLength={1}
-            ref={inputOnesRef}
-            onChange={handleOnesChange}
-            required
-            />  
-          
-        
+            {needHundredsInput && (<input 
+                className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+                type='text' 
+                maxLength={1}
+                ref={inputHundredsRef}
+                onChange={handleHundredsChange}
+                value={hundredsInputValue}
+                required
+              />)} 
+              {!needHundredsInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)} 
+            <input 
+              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+              type='text' 
+              maxLength={1}
+              ref={inputTensRef}
+              onChange={handleTensChange}
+              value={tensInputValue}
+              required
+              />   
+            <input 
+              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+              type='text' 
+              maxLength={1}
+              ref={inputOnesRef}
+              onChange={handleOnesChange}
+              value={onesInputValue}
+              required
+              />  
+
         </div>
       
-
-        <div className="mx-auto mt-10 sm:mt-72 w-1/2 sm:w-1/3 h-28">
+        <div id="right-div" className="mx-auto mt-10 sm:mt-72 w-1/2 sm:w-1/3 h-28">
           
           <ActionButtons 
             check={handleCheck}
