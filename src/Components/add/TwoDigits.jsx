@@ -10,16 +10,12 @@ export default function TwoDigits(){
   const inputTensRef = useRef(null);
   const inputHundredsRef = useRef(null);
   const inputCarryTheTensRef = useRef(null);
-  const [ones, setOnes] = useState(1);
-  const [tens, setTens] = useState(1);
-  const [hundreds, setHundreds] = useState(1);
-  const [carryTheTens, setCarryTheTens] = useState(1);
+  const [ones, setOnes] = useState('');
+  const [tens, setTens] = useState('');
+  const [hundreds, setHundreds] = useState('');
+  const [carryTheTens, setCarryTheTens] = useState('');
   const [needCarryTensInput, setNeedCarryTensInput] = useState(false);
   const [needHundredsInput, setNeedHundredsInput] = useState(false);
-  const [onesInputValue, setOnesInputValue] = useState('');
-  const [tensInputValue, setTenInputValue] = useState('');
-  const [hundredsInputValue, setHundredsInputValue] = useState('');
-  const [carryInputValue, setCarryInputValue] = useState('');
 
   const [TopRowNum1, setTopRowNum1] = useState('');
   const [TopRowNum2, setTopRowNum2] = useState('');
@@ -55,19 +51,25 @@ export default function TwoDigits(){
     console.log(BottomRow2);
 
     let onesColumn = Number(TopRow2) + Number(BottomRow2);
+    let addTen = 0;
     if(onesColumn > 9){
       setNeedCarryTensInput(true);
       onesColumn -= 10;
-    }
-    let tensColumn = Number(TopRow1) + Number(BottomRow1);
-    if(tensColumn > 9){
-      setNeedHundredsInput(true);
+      addTen = 1;
+      console.log(onesColumn);
     }
 
+    let tensColumn = Number(TopRow1) + Number(BottomRow1)+ addTen;
+    if(tensColumn > 9){
+      setNeedHundredsInput(true);
+      console.log(tensColumn);
+    }
+
+    console.log('sum of ones col:', onesColumn);
+    console.log('sum of tens col:', tensColumn);
     setOnesColumnSum(onesColumn);
     setTensColumnSum(tensColumn);
     
-
   }
   const handleOnesChange = ()=>{
     setOnes(inputOnesRef.current.value);
@@ -137,7 +139,6 @@ export default function TwoDigits(){
     //NumsGenerator();
   }
 
-  
   const handleNext = () => {
     //if (turn === 5){
       console.log("Task Complete!");
@@ -155,11 +156,12 @@ export default function TwoDigits(){
 
   return(
     <main className='text-white flex-auto'>
+
       <HomeButton />
+
       <h2 className='font-gugi text-5xl text-center mt-5 m-auto w-4/5'>Column Addition with Two Digits</h2> 
       
       <section className="flex flex-wrap sm:flex-nowrap flex-col sm:flex-row mx-auto mt-16 w-screen">
-
 
         <div id="left-empty-div" className="mx-auto w-1/3 h-10 sm:h-14"></div>
           
@@ -167,13 +169,13 @@ export default function TwoDigits(){
 
             <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
             {needCarryTensInput && (<input 
-              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-              type='text' 
-              maxLength={1}
-              ref={inputCarryTheTensRef}
-              onChange={handleCarryTheTensChange}
-              required
-              value={carryInputValue}
+                className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+                type='text' 
+                maxLength={1}
+                ref={inputCarryTheTensRef}
+                onChange={handleCarryTheTensChange}
+                required
+                value={carryTheTens}
               />)}
             {!needCarryTensInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)}  
             <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
@@ -196,7 +198,7 @@ export default function TwoDigits(){
                 maxLength={1}
                 ref={inputHundredsRef}
                 onChange={handleHundredsChange}
-                value={hundredsInputValue}
+                value={hundreds}
                 required
               />)} 
               {!needHundredsInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)} 
@@ -206,18 +208,18 @@ export default function TwoDigits(){
               maxLength={1}
               ref={inputTensRef}
               onChange={handleTensChange}
-              value={tensInputValue}
+              value={tens}
               required
-              />   
+            />   
             <input 
               className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
               type='text' 
               maxLength={1}
               ref={inputOnesRef}
               onChange={handleOnesChange}
-              value={onesInputValue}
+              value={ones}
               required
-              />  
+            />  
 
         </div>
       
@@ -228,8 +230,7 @@ export default function TwoDigits(){
             clear={handleClear}
             next={handleNext} 
             exit={handleExit}
-            showCheckBtn={showCheckBtn} 
-            //showClearBtn={showClearBtn} 
+            showCheckBtn={showCheckBtn}  
             showNextBtn={showNextBtn}
             showExitBtn={showExitBtn}
           />
