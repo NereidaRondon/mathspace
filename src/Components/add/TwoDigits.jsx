@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
 import HomeButton from "../HomeButton";
+import check from "../../assets/check mark icon.webp";
+import incorrect from "../../assets/x icon.webp";
 import ActionButtons from '../multiply/ActionButtons';
 
 export default function TwoDigits(){
@@ -23,12 +26,18 @@ export default function TwoDigits(){
   const [BottomRowNum2, setBottomRowNum2] = useState('');
   const [onesColumnSum, setOnesColumnSum] = useState('');
   const [tensColumnSum, setTensColumnSum] = useState('');
+  const [hundredsColumnSum, sethundredsColumnSum] = useState('');
 
   const [userInput, setUserInput] = useState('');
   const [showNextBtn, setShowNextBtn] = useState(false);
   const [showExitBtn, setShowExitBtn] = useState(false);
   const [showCheckBtn, setShowCheckBtn] = useState(true);
   const [showClearBtn, setShowClearBtn] = useState(true);
+
+  const [score, setScore] = useState(0);
+  const [totalQuestions, setTotalQuestions] = useState(0);
+  const [showCheck, setShowCheck] = useState(false);
+  const [showIncorrect, setShowIncorrect] = useState(false);
 
   useEffect(()=>{
     NumsGenerator();
@@ -52,23 +61,30 @@ export default function TwoDigits(){
 
     let onesColumn = Number(TopRow2) + Number(BottomRow2);
     let addTen = 0;
+
     if(onesColumn > 9){
       setNeedCarryTensInput(true);
       onesColumn -= 10;
       addTen = 1;
-      console.log(onesColumn);
+      console.log('sum of ones col:', onesColumn);
+      setOnesColumnSum(onesColumn);
+    } else{
+      console.log('sum of ones col:', onesColumn);
+      setOnesColumnSum(onesColumn);
     }
-
+    let addHundred = 1;
     let tensColumn = Number(TopRow1) + Number(BottomRow1)+ addTen;
     if(tensColumn > 9){
       setNeedHundredsInput(true);
+      tensColumn -= 10;
+      sethundredsColumnSum(addHundred);
       console.log(tensColumn);
+      setTensColumnSum(tensColumn);
+    } else{
+      setTensColumnSum(tensColumn);
     }
 
-    console.log('sum of ones col:', onesColumn);
     console.log('sum of tens col:', tensColumn);
-    setOnesColumnSum(onesColumn);
-    setTensColumnSum(tensColumn);
     
   }
   const handleOnesChange = ()=>{
@@ -98,45 +114,33 @@ export default function TwoDigits(){
   }
 
   const handleCheck = () => {
+    console.log("Check answer!");
+    setTotalQuestions(totalQuestions + 1);
     (onesColumnSum == ones)? console.log(true) : console.log(false);
     (tensColumnSum == tens)? console.log(true) : console.log(false);
-    //console.log();
-    //console.log();
-    //console.log();
-    //console.log();
-    //console.log(Number(inputValue) === productValue);
-    //console.log('turn: ', turn);
-    //if(Number(inputValue) === productValue){      
-      //toast.success("That is correct!", {
-      //   position: "bottom-right",
-      //   autoClose: 1500,
-      //   hideProgressBar: true,
-      //   closeOnClick: true,
-      //   pauseOnHover: false,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "colored",
-      // })
-      // setShowNextBtn(true);
-      // setShowCheckClearBtn(false);
-      // setScore(score + 1);
-      // setUsedNumbers(usedNumbers => [...usedNumbers, multiplicand]);
-
-    // }else{
-    //   handleClear();
-    //   toast.error("Try again...", {
-    //     position: "bottom-right",
-    //     autoClose: 1500,
-    //     hideProgressBar: true,
-    //     closeOnClick: true,
-    //     pauseOnHover: false,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "colored",
-    //   })
-    // } 
-    console.log("Check answer!");
+    (hundredsColumnSum == hundreds)? console.log(true) : console.log(false);
+    if(onesColumnSum == ones && tensColumnSum == tens && hundredsColumnSum == hundreds){
+      setScore(score + 1);
+      setShowCheck(true);
+      confetti();
+    } else{
+      setShowIncorrect(true);
+    }
+    
     //NumsGenerator();
+    setTimeout(()=> {
+      if(totalQuestions === 19){
+        console.log('done');
+        confetti.reset(); 
+        navigate('/complete');
+
+      } else{
+        //NumsGenerator();
+        setShowCheck(false);
+        setShowIncorrect(false); 
+        confetti.reset(); 
+      }
+    }, 2000);
   }
 
   const handleNext = () => {
@@ -154,18 +158,27 @@ export default function TwoDigits(){
     //}
   }
 
+  const StarRender = () => {
+    return (
+      <div className='absolute top-3 md:top-5 right-2 text-xl md:text-3xl w-28 md:w-40'>⭐ {score} / {totalQuestions}</div>
+    );
+
+  };
+
   return(
     <main className='text-white flex-auto'>
 
       <HomeButton />
 
-      <h2 className='font-gugi text-5xl text-center mt-5 m-auto w-4/5'>Column Addition with Two Digits</h2> 
+      <h2 className='font-gugi text-2xl sm:text-3xl md:text-5xl text-center mt-16 lg:mt-5 m-auto w-4/5'>Column Addition with Two Digits</h2> 
       
-      <section className="flex flex-wrap sm:flex-nowrap flex-col sm:flex-row mx-auto mt-16 w-screen">
+      <StarRender />
+      
+      <section className="border flex flex-nowrap flex-row mx-auto mt-16 w-screen">
 
-        <div id="left-empty-div" className="mx-auto w-1/3 h-10 sm:h-14"></div>
+        <div id="left-empty-div" className="border border-green-500 mx-auto w-1/3 h-10 sm:h-14"></div>
           
-        <div className="m-auto text-6xl sm:text-8xl text-end leading-25 grid grid-cols-3">
+        <div className="border m-auto text-6xl sm:text-8xl text-end leading-25 grid grid-cols-3">
 
             <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
             {needCarryTensInput && (<input 
@@ -223,8 +236,15 @@ export default function TwoDigits(){
 
         </div>
       
-        <div id="right-div" className="mx-auto mt-10 sm:mt-72 w-1/2 sm:w-1/3 h-28">
-          
+        <div id="right-div" className="border-2 border-red-600 flex justify-center place-content-end mx-auto w-1/2 sm:w-1/3 h-48">     
+            {showCheck && <img src={check} alt='That is correct!' className='check w-9 h-9 sm:w-20 sm:h-20 ms-2' />}
+            {showIncorrect && <img src={incorrect} alt='Incorrect answer.' className='incorrect w-9 h-9 sm:w-20 sm:h-20 ms-2' />}
+        </div>
+
+
+      </section>
+        <section id="btn-div" className="flex justify-center m-auto w-20 pl-4 h-44">
+
           <ActionButtons 
             check={handleCheck}
             clear={handleClear}
@@ -233,10 +253,10 @@ export default function TwoDigits(){
             showCheckBtn={showCheckBtn}  
             showNextBtn={showNextBtn}
             showExitBtn={showExitBtn}
-          />
-        </div>
+            />
+        
+        </section>
 
-      </section>
     </main>
   );
 } 
