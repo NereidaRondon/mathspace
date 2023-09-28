@@ -13,6 +13,7 @@ export default function TwoDigits(){
   const inputTensRef = useRef(null);
   const inputHundredsRef = useRef(null);
   const inputCarryTheTensRef = useRef(null);
+
   const [ones, setOnes] = useState('');
   const [tens, setTens] = useState('');
   const [hundreds, setHundreds] = useState('');
@@ -28,12 +29,7 @@ export default function TwoDigits(){
   const [tensColumnSum, setTensColumnSum] = useState('');
   const [hundredsColumnSum, sethundredsColumnSum] = useState('');
 
-  const [userInput, setUserInput] = useState('');
-  const [showNextBtn, setShowNextBtn] = useState(false);
-  const [showExitBtn, setShowExitBtn] = useState(false);
   const [showCheckBtn, setShowCheckBtn] = useState(true);
-  const [showClearBtn, setShowClearBtn] = useState(true);
-
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [showCheck, setShowCheck] = useState(false);
@@ -44,8 +40,8 @@ export default function TwoDigits(){
   },[]);
 
   function NumsGenerator(){
-    let num1 = Math.floor(Math.random()*50) + 11;
-    let num2 = Math.floor(Math.random()*50) + 11;
+    let num1 = Math.floor(Math.random() * 50) + 11;
+    let num2 = Math.floor(Math.random() * 50) + 11;
     let TopRow1 = num1.toString().charAt(0);
     let TopRow2 = num1.toString().charAt(1);
     let BottomRow1 = num2.toString().charAt(0);
@@ -72,6 +68,7 @@ export default function TwoDigits(){
       console.log('sum of ones col:', onesColumn);
       setOnesColumnSum(onesColumn);
     }
+
     let addHundred = 1;
     let tensColumn = Number(TopRow1) + Number(BottomRow1)+ addTen;
     if(tensColumn > 9){
@@ -87,75 +84,82 @@ export default function TwoDigits(){
     console.log('sum of tens col:', tensColumn);
     
   }
-  const handleOnesChange = ()=>{
+  const handleOnesChange = () =>{
     setOnes(inputOnesRef.current.value);
     console.log(`This is the ones: `+ inputOnesRef.current.value);
   }
-  const handleTensChange = ()=>{
+  const handleTensChange = () =>{
     setTens(inputTensRef.current.value);
     console.log(`This is the tens: `+ inputTensRef.current.value);
   }
-  const handleHundredsChange = ()=>{
+  const handleHundredsChange = () =>{
     setHundreds(inputHundredsRef.current.value);
     console.log(`This is the hundreds: `+ inputHundredsRef.current.value);
   }
-  const handleCarryTheTensChange = ()=>{
+  const handleCarryTheTensChange = () =>{
     setCarryTheTens(inputCarryTheTensRef.current.value);
     console.log(`This is the carry: `+ inputCarryTheTensRef.current.value);
   }
-  
   const handleExit=()=>{
     navigate('/complete');
   }
 
-    const handleClear = () => {
-    //setInputValue('');
+  const handleClear = () => {
     console.log("Inputs cleared!");
+    setCarryTheTens('');
+    setOnes('');
+    setTens('');
+    setHundreds('');
   }
 
   const handleCheck = () => {
-    console.log("Check answer!");
+    console.log('Check answer!');
     setTotalQuestions(totalQuestions + 1);
-    (onesColumnSum == ones)? console.log(true) : console.log(false);
-    (tensColumnSum == tens)? console.log(true) : console.log(false);
-    (hundredsColumnSum == hundreds)? console.log(true) : console.log(false);
+
     if(onesColumnSum == ones && tensColumnSum == tens && hundredsColumnSum == hundreds){
       setScore(score + 1);
       setShowCheck(true);
       confetti();
+      setShowCheckBtn(false);
+      
     } else{
       setShowIncorrect(true);
+      setCarryTheTens('');
+      (onesColumnSum == ones)? console.log(true) : setOnes('');
+      (tensColumnSum == tens)? console.log(true) : setTens('');
+      (hundredsColumnSum == hundreds)? console.log(true) : setHundreds('');
     }
     
-    //NumsGenerator();
     setTimeout(()=> {
-      if(totalQuestions === 19){
+      if(totalQuestions === 9){
         console.log('done');
         confetti.reset(); 
         navigate('/complete');
 
       } else{
-        //NumsGenerator();
+        handleNext();
         setShowCheck(false);
         setShowIncorrect(false); 
-        confetti.reset(); 
+        confetti.reset();
+        NumsGenerator(); 
       }
-    }, 2000);
+    }, 3000);
   }
 
   const handleNext = () => {
-    //if (turn === 5){
-      console.log("Task Complete!");
-      //setShowNextBtn(false);
-      //setShowCheckClearBtn(false);
-      //setShowExitBtn(true);
-    //} else{
-      console.log("Next!");
-      //console.log('turn: ', turn);
-      //setShowNextBtn(false);
-      //setShowCheckClearBtn(true);
+    handleClear();
+    setNeedCarryTensInput(false);
+    setNeedHundredsInput(false);
+
+    if (totalQuestions === 10){
+      console.log('Complete!');
+
+    } else{
+      console.log('Next!');
+      console.log('turn: ', totalQuestions);
+      setShowCheckBtn(true);
       handleClear();
-    //}
+    }
   }
 
   const StarRender = () => {
@@ -174,15 +178,21 @@ export default function TwoDigits(){
       
       <StarRender />
       
-      <section className="border flex flex-nowrap flex-row mx-auto mt-16 w-screen">
+      <section className="flex flex-nowrap flex-row items-end mx-auto mt-16 w-screen">
 
-        <div id="left-empty-div" className="border border-green-500 mx-auto w-1/3 h-10 sm:h-14"></div>
-          
-        <div className="border m-auto text-6xl sm:text-8xl text-end leading-25 grid grid-cols-3">
 
-            <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
+        {/* Left Empty Div */}
+        <div id="left-empty-div" className=" mx-auto w-1/5 md:w-1/3 h-10 sm:h-14"></div>
+
+
+        {/* Equation Div */} 
+        <div className="m-auto text-5xl sm:text-8xl text-end leading-4 sm:leading-25 grid grid-cols-3">
+
+
+            {/* ROW 1 -- CARRY */}
+            <div className="w-12 h-14 sm:w-20 sm:h-24"></div>
             {needCarryTensInput && (<input 
-                className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+                className="border-2 border-gray-500 w-12 h-14 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
                 type='text' 
                 maxLength={1}
                 ref={inputCarryTheTensRef}
@@ -190,23 +200,31 @@ export default function TwoDigits(){
                 required
                 value={carryTheTens}
               />)}
-            {!needCarryTensInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)}  
+            {!needCarryTensInput && (<div className="w-12 h-16 sm:w-20 sm:h-24"></div>)}  
             <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
-
-            <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
-            <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum1}</div>
-            <div className="w-14 h-20 sm:w-20 sm:h-24">{TopRowNum2}</div>
-
-            <div className="w-14 h-20 sm:w-20 sm:h-24 text-center">+</div>
-            <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum1}</div>
-            <div className="w-14 h-20 sm:w-20 sm:h-24">{BottomRowNum2}</div>
-
-            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
-            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
-            <div className="my-1 mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
             
+
+            {/* ROW 2 -- TOP NUMBERS */}
+            <div className="w-12 h-14 sm:w-20 sm:h-24"></div>
+            <div className="w-12 h-14 sm:w-20 sm:h-24">{TopRowNum1}</div>
+            <div className="w-12 h-14 sm:w-20 sm:h-24">{TopRowNum2}</div>
+            
+            
+            {/* ROW 3 -- BOTTOM NUMBERS */}
+            <div className="w-12 h-14 sm:w-20 sm:h-24 text-center">+</div>
+            <div className="w-12 h-14 sm:w-20 sm:h-24">{BottomRowNum1}</div>
+            <div className="w-12 h-14 sm:w-20 sm:h-24">{BottomRowNum2}</div>
+            
+
+            {/* ROW 4 -- LINE */}
+            <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+            <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+            <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+
+
+            {/* ROW 5 -- ANSWER */}
             {needHundredsInput && (<input 
-                className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+                className="border-2 border-gray-500 w-12 h-14 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
                 type='text' 
                 maxLength={1}
                 ref={inputHundredsRef}
@@ -214,9 +232,10 @@ export default function TwoDigits(){
                 value={hundreds}
                 required
               />)} 
-              {!needHundredsInput && (<div className="w-14 h-20 sm:w-20 sm:h-24"></div>)} 
+              {!needHundredsInput && (<div className="w-12 h-14 sm:w-20 sm:h-24"></div>)} 
+
             <input 
-              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+              className="border-2 border-gray-500 w-12 h-14 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
               type='text' 
               maxLength={1}
               ref={inputTensRef}
@@ -224,8 +243,9 @@ export default function TwoDigits(){
               value={tens}
               required
             />   
+
             <input 
-              className="border-2 border-gray-500 w-14 h-20 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
+              className="border-2 border-gray-500 w-12 h-14 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
               type='text' 
               maxLength={1}
               ref={inputOnesRef}
@@ -236,9 +256,11 @@ export default function TwoDigits(){
 
         </div>
       
-        <div id="right-div" className="border-2 border-red-600 flex justify-center place-content-end mx-auto w-1/2 sm:w-1/3 h-48">     
-            {showCheck && <img src={check} alt='That is correct!' className='check w-9 h-9 sm:w-20 sm:h-20 ms-2' />}
-            {showIncorrect && <img src={incorrect} alt='Incorrect answer.' className='incorrect w-9 h-9 sm:w-20 sm:h-20 ms-2' />}
+
+        {/* Right Empty Div */}
+        <div id="right-div" className="flex justify-start mx-auto items-center w-1/5 md:w-1/3 h-14 sm:h-20 md:h-24">     
+            {showCheck && <img src={check} alt='That is correct!' className='check w-9 h-9 sm:w-24 sm:h-24 ms-2' />}
+            {showIncorrect && <img src={incorrect} alt='Incorrect answer.' className='incorrect w-9 h-9 sm:w-24 sm:h-24 ms-2' />}
         </div>
 
 
@@ -251,8 +273,6 @@ export default function TwoDigits(){
             next={handleNext} 
             exit={handleExit}
             showCheckBtn={showCheckBtn}  
-            showNextBtn={showNextBtn}
-            showExitBtn={showExitBtn}
             />
         
         </section>
