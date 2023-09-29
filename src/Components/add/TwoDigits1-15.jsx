@@ -12,18 +12,14 @@ export default function TwoDigits(){
   const inputOnesRef = useRef(null);
   const inputTensRef = useRef(null);
   const inputHundredsRef = useRef(null);
-  const inputCarryTheTensRef = useRef(null);
-
+  
   const [ones, setOnes] = useState('');
   const [tens, setTens] = useState('');
   const [hundreds, setHundreds] = useState('');
-  const [carryTheTens, setCarryTheTens] = useState('');
-  const [needCarryTensInput, setNeedCarryTensInput] = useState(false);
   const [needHundredsInput, setNeedHundredsInput] = useState(false);
 
   const [TopRowNum1, setTopRowNum1] = useState('');
   const [TopRowNum2, setTopRowNum2] = useState('');
-  const [BottomRowNum1, setBottomRowNum1] = useState('');
   const [BottomRowNum2, setBottomRowNum2] = useState('');
   const [onesColumnSum, setOnesColumnSum] = useState('');
   const [tensColumnSum, setTensColumnSum] = useState('');
@@ -40,28 +36,21 @@ export default function TwoDigits(){
   },[]);
 
   function NumsGenerator(){
-    let num1 = Math.floor(Math.random() * 50) + 11;
-    let num2 = Math.floor(Math.random() * 50) + 11;
-    let TopRow1 = num1.toString().charAt(0);
-    let TopRow2 = num1.toString().charAt(1);
-    let BottomRow1 = num2.toString().charAt(0);
-    let BottomRow2 = num2.toString().charAt(1);
+    
+    let TopRow1 = Math.floor(Math.random() * 1) + 1;
+    let TopRow2 = Math.floor(Math.random() * 6);
+    let BottomRow2 = Math.floor(Math.random() * 4)+ 1;
     setTopRowNum1(TopRow1);
     setTopRowNum2(TopRow2);
-    setBottomRowNum1(BottomRow1);
     setBottomRowNum2(BottomRow2);
     console.log(TopRow1);
     console.log(TopRow2);
-    console.log(BottomRow1);
     console.log(BottomRow2);
 
     let onesColumn = Number(TopRow2) + Number(BottomRow2);
-    let addTen = 0;
 
     if(onesColumn > 9){
-      setNeedCarryTensInput(true);
       onesColumn -= 10;
-      addTen = 1;
       console.log('sum of ones col:', onesColumn);
       setOnesColumnSum(onesColumn);
     } else{
@@ -70,7 +59,7 @@ export default function TwoDigits(){
     }
 
     let addHundred = 1;
-    let tensColumn = Number(TopRow1) + Number(BottomRow1)+ addTen;
+    let tensColumn = Number(TopRow1);
     if(tensColumn > 9){
       setNeedHundredsInput(true);
       tensColumn -= 10;
@@ -96,17 +85,12 @@ export default function TwoDigits(){
     setHundreds(inputHundredsRef.current.value);
     console.log(`This is the hundreds: `+ inputHundredsRef.current.value);
   }
-  const handleCarryTheTensChange = () =>{
-    setCarryTheTens(inputCarryTheTensRef.current.value);
-    console.log(`This is the carry: `+ inputCarryTheTensRef.current.value);
-  }
   const handleExit=()=>{
     navigate('/complete');
   }
 
   const handleClear = () => {
     console.log("Inputs cleared!");
-    setCarryTheTens('');
     setOnes('');
     setTens('');
     setHundreds('');
@@ -124,7 +108,6 @@ export default function TwoDigits(){
       
     } else{
       setShowIncorrect(true);
-      setCarryTheTens('');
       (onesColumnSum == ones)? console.log(true) : setOnes('');
       (tensColumnSum == tens)? console.log(true) : setTens('');
       (hundredsColumnSum == hundreds)? console.log(true) : setHundreds('');
@@ -148,7 +131,6 @@ export default function TwoDigits(){
 
   const handleNext = () => {
     handleClear();
-    setNeedCarryTensInput(false);
     setNeedHundredsInput(false);
 
     if (totalQuestions === 10){
@@ -174,9 +156,11 @@ export default function TwoDigits(){
 
       <HomeButton />
 
-      <h2 className='font-gugi text-2xl sm:text-3xl md:text-5xl text-center mt-16 lg:mt-5 m-auto w-4/5'>Column Addition with Two Digits</h2> 
-      
       <StarRender />
+
+      <h2 className='font-gugi text-2xl sm:text-3xl md:text-5xl text-center mt-16 lg:mt-5 m-auto w-4/5'>Column Addition with Two Digits</h2> 
+      <p className='font-quicksand text-xl md:text-4xl text-center my-3 m-auto w-4/5'>Numbers 1-15</p>
+      
       
       <section className="flex flex-nowrap flex-row items-end mx-auto mt-16 w-screen">
 
@@ -191,35 +175,30 @@ export default function TwoDigits(){
 
             {/* ROW 1 -- CARRY */}
             <div className="w-12 h-14 sm:w-20 sm:h-24"></div>
-            {needCarryTensInput && (<input 
-                className="border-2 border-gray-500 w-12 h-14 sm:w-20 sm:h-24 bg-transparent text-center rounded-md" 
-                type='text' 
-                maxLength={1}
-                ref={inputCarryTheTensRef}
-                onChange={handleCarryTheTensChange}
-                required
-                value={carryTheTens}
-              />)}
-            {!needCarryTensInput && (<div className="w-12 h-16 sm:w-20 sm:h-24"></div>)}  
+            <div className="w-12 h-16 sm:w-20 sm:h-24"></div>
             <div className="w-14 h-20 sm:w-20 sm:h-24"></div>
+            {/* <div className="w-3 h-14 sm:h-24"></div> */}
             
 
             {/* ROW 2 -- TOP NUMBERS */}
             <div className="w-12 h-14 sm:w-20 sm:h-24"></div>
             <div className="w-12 h-14 sm:w-20 sm:h-24">{TopRowNum1}</div>
             <div className="w-12 h-14 sm:w-20 sm:h-24">{TopRowNum2}</div>
+            {/* <div className="w-3 h-14 sm:h-24"></div> */}
             
             
             {/* ROW 3 -- BOTTOM NUMBERS */}
             <div className="w-12 h-14 sm:w-20 sm:h-24 text-center">+</div>
-            <div className="w-12 h-14 sm:w-20 sm:h-24">{BottomRowNum1}</div>
+            <div className="w-12 h-14 sm:w-20 sm:h-24 text-center"></div>
             <div className="w-12 h-14 sm:w-20 sm:h-24">{BottomRowNum2}</div>
+            {/* <div className="w-3 h-14 sm:h-24"></div> */}
             
 
             {/* ROW 4 -- LINE */}
             <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
             <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
             <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-14 sm:w-20 h-2"></div>
+            {/* <div className="sm:my-1 mb-2 sm:mb-3 bg-teal-300 w-3 h-2"></div> */}
 
 
             {/* ROW 5 -- ANSWER */}
@@ -253,6 +232,7 @@ export default function TwoDigits(){
               value={ones}
               required
             />  
+            {/* <div className="border w-3 h-14 sm:h-24"></div> */}
 
         </div>
       
