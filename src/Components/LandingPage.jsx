@@ -14,7 +14,9 @@ export default function MathSpace(){
 
       <section className="sm:w-96 md:w-3/5 xl:w-screen -mt-6 sm:mt-10 md:mt-15 xl:mt-24">
         
-        <Link to='/numbersmenu'><button className={buttonClass}>Numbers</button></Link>
+        {/* <Link to='/numbersmenu'><button className={buttonClass}>Numbers</button></Link> */}
+
+        <Link to='/compare'><button className={buttonClass}>&#60;, &#62;, &#61;</button></Link>
 
         <Link to='/additionmenu'><button className={buttonClass}>Add</button></Link>
 

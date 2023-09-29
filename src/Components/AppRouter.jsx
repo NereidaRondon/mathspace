@@ -20,7 +20,7 @@ export default function AppRouter(){
     <Routes>
       <Route path="/" element={ <LandingPage /> } />
 
-      <Route path="/numbersmenu" element={ <NumbersMenu /> } />
+      {/* <Route path="/numbersmenu" element={ <NumbersMenu /> } /> */}
       <Route path="/compare" element={ <Compare /> } />
       <Route path="/additionmenu" element={ <AdditionMenu /> } />
       <Route path="/add_1_5" element={ <Add_1_5 /> } />

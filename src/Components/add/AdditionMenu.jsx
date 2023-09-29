@@ -19,11 +19,11 @@ export default function AdditionMenu(){
 
         <Link to='/add_1_35'><button className={buttonClass}>Add Numbers<p>from 1-35</p></button></Link>
 
-        <Link to='/twodigits_1_15'><button className={buttonClass}>Column Addition<p>2 digits from 1 - 15</p></button></Link>
+        <Link to='/twodigits_1_15'><button className={buttonClass}>Column Addition<p>1 - 15</p></button></Link>
 
-        <Link to='/twodigits_10_49'><button className={buttonClass}>Column Addition<p>2 digits from 10 - 49</p></button></Link>
+        <Link to='/twodigits_10_49'><button className={buttonClass}>Column Addition<p>10 - 49</p></button></Link>
 
-        <Link to='/twodigits_30_99'><button className={buttonClass}>Column Addition<p>2 digits from 30 - 99</p></button></Link>
+        <Link to='/twodigits_30_99'><button className={buttonClass}>Column Addition<p>30 - 99</p></button></Link>
 
         {/* <Link to='/threedigits'><button className={buttonClass}>Column Addition<p>3 digits 🚧</p></button></Link> */}
 
