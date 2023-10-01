@@ -4,7 +4,7 @@ import confetti from "https://cdn.skypack.dev/canvas-confetti";
 import HomeButton from "../HomeButton";
 import check from "../../assets/check mark icon.webp";
 import incorrect from "../../assets/x icon.webp";
-import ActionButtons from '../multiply/ActionButtons';
+import CheckButton from './CheckButton';
 
 export default function TwoDigits(){
   
@@ -117,7 +117,7 @@ export default function TwoDigits(){
       if(totalQuestions === 9){
         console.log('done');
         confetti.reset(); 
-        navigate('/complete');
+        handleExit();
 
       } else{
         handleNext();
@@ -162,7 +162,7 @@ export default function TwoDigits(){
       <p className='font-quicksand text-xl md:text-4xl text-center my-3 m-auto w-4/5'>Numbers 1-15</p>
       
       
-      <section className="flex flex-nowrap flex-row items-end mx-auto mt-16 w-screen">
+      <section className="flex flex-nowrap flex-row items-end mx-auto mt-10 w-screen">
 
 
         {/* Left Empty Div */}
@@ -232,30 +232,21 @@ export default function TwoDigits(){
               value={ones}
               required
             />  
-            {/* <div className="border w-3 h-14 sm:h-24"></div> */}
 
         </div>
       
-
         {/* Right Empty Div */}
         <div id="right-div" className="flex justify-start mx-auto items-center w-1/5 md:w-1/3 h-14 sm:h-20 md:h-24">     
             {showCheck && <img src={check} alt='That is correct!' className='check w-9 h-9 sm:w-24 sm:h-24 ms-2' />}
             {showIncorrect && <img src={incorrect} alt='Incorrect answer.' className='incorrect w-9 h-9 sm:w-24 sm:h-24 ms-2' />}
         </div>
 
-
       </section>
-        <section id="btn-div" className="flex justify-center m-auto w-20 pl-4 h-44">
-
-          <ActionButtons 
-            check={handleCheck}
-            clear={handleClear}
-            next={handleNext} 
-            exit={handleExit}
-            showCheckBtn={showCheckBtn}  
-            />
         
-        </section>
+      <CheckButton 
+        check={handleCheck}
+        showCheckBtn={showCheckBtn}  
+      />
 
     </main>
   );
