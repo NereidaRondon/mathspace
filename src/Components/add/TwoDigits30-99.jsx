@@ -273,7 +273,7 @@ export default function TwoDigits(){
         <section id="btn-div" className="flex justify-center m-auto w-20 pl-4 h-44">
 
           <CheckButton 
-            check={handleCheck}
+            handleCheck={handleCheck}
             showCheckBtn={showCheckBtn}  
           />
         

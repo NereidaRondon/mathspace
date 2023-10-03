@@ -244,7 +244,7 @@ export default function TwoDigits(){
       </section>
         
       <CheckButton 
-        check={handleCheck}
+        handleCheck={handleCheck}
         showCheckBtn={showCheckBtn}  
       />
 
