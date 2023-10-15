@@ -9,6 +9,7 @@ import HomeButton from "../HomeButton";
       
 
 export default function AddPage(){
+  const title = 'Subtraction';
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
@@ -151,7 +152,10 @@ export default function AddPage(){
   return(
     
     <>
-      <Header score={score} />
+      <Header 
+        score={score} 
+        title={title}
+      />
       
       <HomeButton />
 

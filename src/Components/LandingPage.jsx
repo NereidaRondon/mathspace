@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import astronaut from '../assets/astronaut.svg';
+import HomeButton from "./HomeButton";
 
 export default function MathSpace(){
   const buttonClass = 'rounded-xl md:rounded-2xl text-2xl md:text-4xl mx-5 lg:mx-10 my-5 py-4 md:py-6 w-36 md:w-48 font-bold text-white btn-animation glow-on-hover';
@@ -7,6 +8,7 @@ export default function MathSpace(){
   return(
     <>
     <main className='landingpage flex flex-col m-auto w-screen h-screen items-center text-center '>
+      <HomeButton />
       
       <h1 className="font-gugi w-11/12 mt-20 mb-60 md:mb-80 text-5xl md:text-7xl lg:text-9xl drop-shadow-5xl text-white title">MathSpace</h1>
       

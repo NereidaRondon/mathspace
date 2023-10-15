@@ -9,6 +9,7 @@ import Counters from './Counters';
 import HomeButton from "../HomeButton";
 
 export default function MultiplyPage(){
+  const title = 'Multiplication';
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
@@ -198,7 +199,10 @@ export default function MultiplyPage(){
         }
       </section>
 
-      <Header score={score} />
+      <Header 
+        title={title}
+        score={score} 
+      />
 
       <main className='m-auto flex flex-col flex-wrap justify-center items-center w-11/12 2xl:w-2/3 text-white'> 
          

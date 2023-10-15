@@ -9,6 +9,7 @@ import HomeButton from "../HomeButton";
       
 
 export default function Add_1_5(){
+  const title = 'Addition';
   const inputRef = useRef(null);
   const navigate = useNavigate();
   const [turn, setTurn] = useState(1);
@@ -155,7 +156,10 @@ export default function Add_1_5(){
   return(
     
     <>
-      <Header score={score} />
+      <Header 
+        score={score} 
+        title={title}
+      />
       
       <HomeButton />
 

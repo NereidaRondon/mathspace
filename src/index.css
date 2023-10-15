@@ -9,14 +9,22 @@ body{
   background-size: cover;
   width: 100%;
 }
-.fa-house{
-  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(271deg) brightness(110%) contrast(101%) drop-shadow(3px 3px 2px rgba(0, 71, 212));
+.rocket{
+  width: 80px;
+  height: 80px;
 }
-.fa-house:hover{
-  filter: invert(87%) sepia(28%) saturate(1052%) hue-rotate(98deg) brightness(96%) contrast(115%) drop-shadow(3px 3px 2px rgba(0, 71, 212));
+.rocket:hover{
+  filter: drop-shadow(-10px 10px 4px rgba(255, 208, 0, .6));
+  /* transform: rotate(30deg); */
+  animation: moveRocket 3s linear forwards;
 }
-.check{
-  filter: invert(47%) sepia(84%) saturate(1968%) hue-rotate(93deg) brightness(102%) contrast(110%);
+@keyframes moveRocket {
+	20% { transform: rotate(25deg) translate(3px, 5px); }
+  40% { transform: rotate(32deg) translate(-3px, -3px); }
+	60% { transform: rotate(28deg) translate(5px, 5px); }
+	80% { transform: rotate(30deg) translate(-2px, -2px); }
+	90% { transform: rotate(20deg) translate(3px, 3px); }
+	100% { transform: rotate(0deg) translate(0,0); }
 }
 .incorrect{
   filter: invert(8%) sepia(100%) saturate(7175%) hue-rotate(23deg) brightness(91%) contrast(124%);
