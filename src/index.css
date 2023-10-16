@@ -9,10 +9,10 @@ body{
   background-size: cover;
   width: 100%;
 }
-.rocket{
+/* .rocket{
   width: 80px;
   height: 80px;
-}
+} */
 .rocket:hover{
   filter: drop-shadow(-10px 10px 4px rgba(255, 208, 0, .6));
   /* transform: rotate(30deg); */
