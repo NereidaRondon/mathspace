@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import confetti from "https://cdn.skypack.dev/canvas-confetti";
+import confetti from "canvas-confetti";
 import HomeButton from "../HomeButton";
 import check from "../../assets/check mark icon.webp";
 import incorrect from "../../assets/x icon.webp";
